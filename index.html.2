@@ -1,0 +1,1909 @@
+<!doctype html>
+<html 
+      lang="en"
+      dir="ltr">
+  <head>
+    <meta name="google-signin-client-id" content="721724668570-nbkv1cfusk7kk4eni4pjvepaus73b13t.apps.googleusercontent.com">
+    <meta name="google-signin-scope"
+          content="profile email https://www.googleapis.com/auth/developerprofiles https://www.googleapis.com/auth/developerprofiles.award">
+    <meta property="og:site_name" content="Google Developers">
+    <meta property="og:type" content="website"><meta name="theme-color" content="#1a73e8"><meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <link rel="manifest" href="/_pwa/developers/manifest.json"
+          crossorigin="use-credentials">
+    <link rel="preconnect" href="//www.gstatic.com" crossorigin>
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="//fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="//apis.google.com" crossorigin>
+    <link rel="preconnect" href="//www.google-analytics.com" crossorigin><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap">
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Material+Icons&display=block"><link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/prod/v3e5e49c86560fa1d4115a3867ece7b214786f7f53a4ea5df16ed22c32fc83928/developers/css/app.css">
+      <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/prod/v3e5e49c86560fa1d4115a3867ece7b214786f7f53a4ea5df16ed22c32fc83928/developers/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/prod/v3e5e49c86560fa1d4115a3867ece7b214786f7f53a4ea5df16ed22c32fc83928/developers/images/touchicon-180.png"><link rel="canonical" href="https://developers.google.com/protocol-buffers"><link rel="search" type="application/opensearchdescription+xml"
+            title="Google Developers" href="https://developers.google.com/s/opensearch.xml">
+      
+
+<title>Protocol Buffers &nbsp;|&nbsp; Google Developers</title>
+
+<meta property="og:title" content="Protocol Buffers &nbsp;|&nbsp; Google Developers"><meta name="description" content="Protocol buffers are a language-neutral, platform-neutral extensible mechanism for serializing structured data.
+">
+  <meta property="og:description" content="Protocol buffers are a language-neutral, platform-neutral extensible mechanism for serializing structured data.
+"><meta property="og:url" content="https://developers.google.com/protocol-buffers"><meta property="og:image" content="https://www.gstatic.com/devrel-devsite/prod/v3e5e49c86560fa1d4115a3867ece7b214786f7f53a4ea5df16ed22c32fc83928/developers/images/opengraph/google-blue.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="675"><meta property="og:locale" content="en"><meta name="twitter:card" content="summary_large_image">
+    </head>
+  <body class=""
+        template="landing"
+        theme="google-blue"
+        type="product"
+        
+        
+        layout="full"
+        
+        
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+  
+    <section class="devsite-wrapper"><devsite-header>
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner nocontent">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Open menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+
+  
+    
+  
+
+
+
+  
+  
+  <span class="devsite-product-name">
+    <ul class="devsite-breadcrumb-list"
+  >
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+      
+        
+  <a href="https://developers.google.com/protocol-buffers"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Upper Header"
+      
+        data-value="1"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="1"
+      
+        track-metadata-eventdetail="Protocol Buffers"
+      
+    >
+    
+          <h1 class="devsite-product-name">Protocol Buffers</h1>
+        
+  </a>
+  
+      
+    
+  </li>
+  
+</ul>
+  </span>
+
+</div>
+        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+            
+           </div>
+          
+<devsite-search
+    aria-expanded="false"
+    aria-haspopup="listbox"
+    enable-signin
+    enable-search
+    enable-suggestions
+      enable-query-completion
+    
+    project-name="Protocol Buffers"
+    tenant-name="Google Developers"
+    project-scope="/protocol-buffers"
+    url-scoped="https://developers.google.com/s/results/protocol-buffers"
+    
+    
+    
+    
+    role="combobox">
+  <form class="devsite-search-form" action="https://developers.google.com/s/results" method="GET">
+    <div class="devsite-search-container">
+      <div class="devsite-searchbox">
+        <input
+          aria-activedescendant=""
+          aria-autocomplete="list"
+          
+          aria-label="Search"
+          aria-haspopup="false"
+          aria-multiline="false"
+          aria-label="Search box"
+          autocomplete="off"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          
+          placeholder="Search"
+          role="searchbox"
+          type="text"
+          value=""
+          >
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              
+              aria-label="Open search"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          
+          aria-label="Close search"></button>
+</devsite-search>
+
+        </div>
+
+        
+
+        
+
+        
+<devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    
+    <select aria-label="Select your language preference."
+            class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+    
+      
+      <option>Language</option>
+    
+    
+      <option value="en"
+              lang="en"
+            >
+        English
+      </option>
+    
+      <option value="id"
+              lang="id"
+            >
+        Bahasa Indonesia
+      </option>
+    
+      <option value="de"
+              lang="de"
+            >
+        Deutsch
+      </option>
+    
+      <option value="es"
+              lang="es"
+            >
+        Español
+      </option>
+    
+      <option value="fr"
+              lang="fr"
+            >
+        Français
+      </option>
+    
+      <option value="pt_br"
+              lang="pt_br"
+            >
+        Português – Brasil
+      </option>
+    
+      <option value="ru"
+              lang="ru"
+            >
+        Русский
+      </option>
+    
+      <option value="zh_cn"
+              lang="zh_cn"
+            >
+        中文 – 简体
+      </option>
+    
+      <option value="ja"
+              lang="ja"
+            >
+        日本語
+      </option>
+    
+      <option value="ko"
+              lang="ko"
+            >
+        한국어
+      </option>
+    
+    </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+        
+
+        
+          
+          
+          <devsite-user 
+                        
+                        
+                          enable-profiles
+                        
+                        
+                          fp-auth
+                        
+                        id="devsite-user">
+            
+              
+              <span class="button devsite-top-button" aria-hidden="true" visually-hidden>Sign in</span>
+            
+        </devsite-user>
+           
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+      
+        
+          <div class="devsite-product-id-row"
+           >
+            <div class="devsite-product-description-row">
+              
+                
+              
+              
+              <div class="devsite-product-description">
+                Protocol buffers are a language-neutral, platform-neutral extensible mechanism for serializing structured data.
+
+              </div>
+              
+            </div>
+            
+          </div>
+          
+        
+      
+      
+        <div class="devsite-doc-set-nav-row">
+          
+          
+            
+            
+  <devsite-tabs class="lower-tabs">
+
+    <nav class="devsite-tabs-wrapper" aria-label="Lower tabs">
+      
+        
+          <tab  active>
+            <a href="https://developers.google.com/protocol-buffers"
+   class="gc-analytics-event "
+   track-type="nav"
+   track-metadata-eventdetail="https://developers.google.com/protocol-buffers"
+   track-metadata-position="nav - home"
+   track-metadata-module="primary nav"
+   aria-label="Home, selected" 
+   
+    
+      data-category="Site-Wide Custom Events"
+    
+      data-label="Tab: Home"
+    
+      track-name="home"
+    
+  >
+  Home
+</a>
+
+          </tab>
+        
+      
+        
+          <tab  >
+            <a href="https://developers.google.com/protocol-buffers/docs/overview"
+   class="gc-analytics-event "
+   track-type="nav"
+   track-metadata-eventdetail="https://developers.google.com/protocol-buffers/docs/overview"
+   track-metadata-position="nav - guides"
+   track-metadata-module="primary nav"
+   
+   
+    
+      data-category="Site-Wide Custom Events"
+    
+      data-label="Tab: Guides"
+    
+      track-name="guides"
+    
+  >
+  Guides
+</a>
+
+          </tab>
+        
+      
+        
+          <tab  >
+            <a href="https://developers.google.com/protocol-buffers/docs/reference/overview"
+   class="gc-analytics-event "
+   track-type="nav"
+   track-metadata-eventdetail="https://developers.google.com/protocol-buffers/docs/reference/overview"
+   track-metadata-position="nav - reference"
+   track-metadata-module="primary nav"
+   
+   
+    
+      data-category="Site-Wide Custom Events"
+    
+      data-label="Tab: Reference"
+    
+      track-name="reference"
+    
+  >
+  Reference
+</a>
+
+          </tab>
+        
+      
+        
+          <tab  >
+            <a href="https://developers.google.com/protocol-buffers/docs/faq"
+   class="gc-analytics-event "
+   track-type="nav"
+   track-metadata-eventdetail="https://developers.google.com/protocol-buffers/docs/faq"
+   track-metadata-position="nav - support"
+   track-metadata-module="primary nav"
+   
+   
+    
+      data-category="Site-Wide Custom Events"
+    
+      data-label="Tab: Support"
+    
+      track-name="support"
+    
+  >
+  Support
+</a>
+
+          </tab>
+        
+      
+    </nav>
+
+  </devsite-tabs>
+
+          
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+  
+</devsite-header>
+      <devsite-book-nav scrollbars hidden>
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="devsite-book-nav-filter
+            hidden">
+  <input type="text"
+         placeholder="Filter"
+         
+         aria-label="Type to filter"
+         role="searchbox">
+  
+  <span class="filter-clear-button hidden"
+        data-title="Clear filter"
+        aria-label="Clear filter"
+        role="button"
+        tabindex="0"></span>
+</div>
+
+<nav class="devsite-book-nav devsite-nav nocontent"
+     aria-label="Side menu">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+    <div class="devsite-product-name-wrapper">
+
+  
+    
+  
+
+
+  
+      <span class="devsite-product-name">
+        
+        
+        <ul class="devsite-breadcrumb-list"
+  >
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+      
+        
+  <a href="https://developers.google.com/protocol-buffers"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Upper Header"
+      
+        data-value="1"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="1"
+      
+        track-metadata-eventdetail="Protocol Buffers"
+      
+    >
+    
+          <h1 class="devsite-product-name">Protocol Buffers</h1>
+        
+  </a>
+  
+      
+    
+  </li>
+  
+</ul>
+      </span>
+    
+
+</div>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+      
+        <ul class="devsite-nav-list">
+          
+            
+<li class="devsite-nav-item">
+
+  
+  <a href="/protocol-buffers"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              devsite-nav-active"
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Home"
+      
+        track-name="home"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Home"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Home
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+          
+            
+<li class="devsite-nav-item">
+
+  
+  <a href="/protocol-buffers/docs/overview"
+    
+       class="devsite-nav-title gc-analytics-event
+              devsite-nav-has-children
+              "
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Guides"
+      
+        track-name="guides"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Guides"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Guides
+   </span>
+    
+    <span class="devsite-nav-icon material-icons" data-icon="forward"
+          >
+    </span>
+    
+  
+  </a>
+  
+
+</li>
+
+          
+            
+<li class="devsite-nav-item">
+
+  
+  <a href="/protocol-buffers/docs/reference/overview"
+    
+       class="devsite-nav-title gc-analytics-event
+              devsite-nav-has-children
+              "
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Reference"
+      
+        track-name="reference"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Reference
+   </span>
+    
+    <span class="devsite-nav-icon material-icons" data-icon="forward"
+          >
+    </span>
+    
+  
+  </a>
+  
+
+</li>
+
+          
+            
+<li class="devsite-nav-item">
+
+  
+  <a href="/protocol-buffers/docs/faq"
+    
+       class="devsite-nav-title gc-analytics-event
+              devsite-nav-has-children
+              "
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Support"
+      
+        track-name="support"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Support"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Support
+   </span>
+    
+    <span class="devsite-nav-icon material-icons" data-icon="forward"
+          >
+    </span>
+    
+  
+  </a>
+  
+
+</li>
+
+          
+          
+          
+        </ul>
+      
+    </div>
+    
+  </div>
+</nav>
+        
+      </devsite-book-nav>
+      <section id="gc-wrapper">
+        <main role="main" class="devsite-main-content"
+            
+            >
+          
+          <div class="devsite-sidebar">
+            <div class="devsite-sidebar-content">
+              <devsite-toc class="devsite-nav"
+                           role="navigation"
+                           aria-label="On this page"
+                           depth="2"
+                           scrollbars
+                disabled></devsite-toc>
+              <devsite-recommendations-sidebar class="nocontent devsite-nav">
+              </devsite-recommendations-sidebar>
+            </div>
+          </div>
+          
+          <devsite-content >
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<article class="devsite-article">
+  
+  
+  
+
+  <div class="devsite-article-meta nocontent" role="navigation">
+    
+    
+    <ul class="devsite-breadcrumb-list"
+  
+    aria-label="Breadcrumb">
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+  <a href="https://developers.google.com/"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="1"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="1"
+      
+        track-metadata-eventdetail=""
+      
+    >
+    
+        Home
+      
+  </a>
+  
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+  <a href="https://developers.google.com/products"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="2"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="2"
+      
+        track-metadata-eventdetail=""
+      
+    >
+    
+        Products
+      
+  </a>
+  
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+  <a href="https://developers.google.com/protocol-buffers"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="3"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="3"
+      
+        track-metadata-eventdetail="Protocol Buffers"
+      
+    >
+    
+        Protocol Buffers
+      
+  </a>
+  
+    
+  </li>
+  
+</ul>
+    
+  </div>
+  
+  
+  <devsite-bookmark></devsite-bookmark>
+  <devsite-toc class="devsite-nav"
+               depth="2"
+               devsite-toc-embedded
+               disabled>
+  </devsite-toc>
+
+  
+
+  <div class="devsite-article-body clearfix
+    devsite-no-page-title">
+
+    
+      
+  <section class="devsite-landing-row devsite-landing-row-3-up"
+           
+           
+           
+    header-position="top"
+  >
+    <div class="devsite-landing-row-inner">
+
+    
+      
+
+      
+
+        <div class="devsite-landing-row-group">
+        
+          <div class="devsite-landing-row-item"
+     
+     
+     
+    description-position="bottom"
+  >
+
+  
+
+    
+<div class="devsite-landing-row-item-media
+            ">
+  
+    <div class="devsite-landing-row-item-code">
+  <pre class="prettyprint" translate="no" dir="ltr">
+message Person {
+  required string name = 1;
+  required int32 id = 2;
+  optional string email = 3;
+}
+
+
+</pre>
+
+</div>
+  
+</div>
+
+
+    
+    <div class="devsite-landing-row-item-description"
+         >
+
+      
+
+      <div class="devsite-landing-row-item-body">
+        
+
+        
+    <h3 id="what-are-protocol-buffers"
+        data-text="What are protocol buffers?"
+        class="hide-from-toc no-link"
+        tabindex="0">
+      
+  <a href="https://developers.google.com/protocol-buffers/docs/overview">
+    
+        What are protocol buffers?
+      
+  </a>
+  
+    </h3>
+  
+
+        
+          <div class="devsite-landing-row-item-description-content">
+            Protocol buffers are Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data – think XML, but smaller, faster, and simpler. You define how you want your data to be structured once, then you can use special generated source code to easily write and read your structured data to and from a variety of data streams and using a variety of languages.
+          </div>
+        
+
+        
+
+        
+          <div class="devsite-landing-row-item-buttons">
+  
+
+  
+  <a href="https://developers.google.com/protocol-buffers/docs/overview"
+  
+    
+      class="button
+             button-white
+             "
+    
+    
+    >Learn more</a>
+
+</div>
+        
+      </div>
+    </div>
+    
+  
+
+</div>
+        
+          <div class="devsite-landing-row-item"
+     
+     
+     
+    description-position="bottom"
+  >
+
+  
+
+    
+<div class="devsite-landing-row-item-media
+            ">
+  
+    <div class="devsite-landing-row-item-code">
+  <pre class="prettyprint" translate="no" dir="ltr">
+Person john = Person.newBuilder()
+    .setId(1234)
+    .setName("John Doe")
+    .setEmail("jdoe@example.com")
+    .build();
+output = new FileOutputStream(args[0]);
+john.writeTo(output);</pre>
+
+</div>
+  
+</div>
+
+
+    
+    <div class="devsite-landing-row-item-description"
+         >
+
+      
+
+      <div class="devsite-landing-row-item-body">
+        
+
+        
+    <h3 id="pick-your-favorite-language"
+        data-text="Pick your favorite language"
+        class="hide-from-toc no-link"
+        tabindex="0">
+      
+  <a href="https://developers.google.com/protocol-buffers/docs/cpptutorial">
+    
+        Pick your favorite language
+      
+  </a>
+  
+    </h3>
+  
+
+        
+          <div class="devsite-landing-row-item-description-content">
+            Protocol buffers currently support generated code in Java, Python, Objective-C, and C++. With our new proto3 language version, you can also work with Kotlin, Dart, Go, Ruby, and C#, with more languages to come.
+          </div>
+        
+
+        
+
+        
+          <div class="devsite-landing-row-item-buttons">
+  
+
+  
+  <a href="https://developers.google.com/protocol-buffers/docs/cpptutorial"
+  
+    
+      class="button
+             button-white
+             "
+    
+    
+    >C++</a>
+
+  
+  <a href="https://developers.google.com/protocol-buffers/docs/csharptutorial"
+  
+    
+      class="button
+             button-white
+             "
+    
+    
+    >C#</a>
+
+  
+  <a href="https://developers.google.com/protocol-buffers/docs/darttutorial"
+  
+    
+      class="button
+             button-white
+             "
+    
+    
+    >Dart</a>
+
+  
+  <a href="https://developers.google.com/protocol-buffers/docs/gotutorial"
+  
+    
+      class="button
+             button-white
+             "
+    
+    
+    >Go</a>
+
+  
+  <a href="https://developers.google.com/protocol-buffers/docs/javatutorial"
+  
+    
+      class="button
+             button-white
+             "
+    
+    
+    >Java</a>
+
+  
+  <a href="https://developers.google.com/protocol-buffers/docs/kotlintutorial"
+  
+    
+      class="button
+             button-white
+             "
+    
+    
+    >Kotlin</a>
+
+  
+  <a href="https://developers.google.com/protocol-buffers/docs/pythontutorial"
+  
+    
+      class="button
+             button-white
+             "
+    
+    
+    >Python</a>
+
+</div>
+        
+      </div>
+    </div>
+    
+  
+
+</div>
+        
+          <div class="devsite-landing-row-item"
+     
+     
+     
+    description-position="bottom"
+  >
+
+  
+
+    
+<div class="devsite-landing-row-item-media
+            ">
+  
+    <div class="devsite-landing-row-item-code">
+  <pre class="prettyprint" translate="no" dir="ltr">
+Person john;
+fstream input(argv[1],
+    ios::in | ios::binary);
+john.ParseFromIstream(&input);
+id = john.id();
+name = john.name();
+email = john.email();</pre>
+
+</div>
+  
+</div>
+
+
+    
+    <div class="devsite-landing-row-item-description"
+         >
+
+      
+
+      <div class="devsite-landing-row-item-body">
+        
+
+        
+    <h3 id="how-do-i-start"
+        data-text="How do I start?"
+        class="hide-from-toc no-link"
+        tabindex="0">
+      
+    
+        How do I start?
+      
+  
+    </h3>
+  
+
+        
+          <div class="devsite-landing-row-item-description-content">
+            <ol><li><a href="https://github.com/protocolbuffers/protobuf">Download</a> and install the protocol buffer compiler.</li><li>Read the <a href="/protocol-buffers/docs/overview">overview</a>.</li><li>Try the <a href="/protocol-buffers/docs/tutorials">tutorial</a> for your chosen language.</li></ol>
+          </div>
+        
+
+        
+
+        
+      </div>
+    </div>
+    
+  
+
+</div>
+        
+        </div>
+      
+
+    
+    </div>
+  </section>
+
+    
+
+    
+  </div>
+
+  
+
+  
+
+  
+  
+</article>
+
+
+
+<devsite-notification
+>
+</devsite-notification>
+
+
+  
+<div class="devsite-content-data">
+  <template class="devsite-thumb-rating-down-categories">
+  [{
+      "type": "thumb-down",
+      "id": "missingTheInformationINeed",
+      "label":"Missing the information I need"
+    },{
+      "type": "thumb-down",
+      "id": "tooComplicatedTooManySteps",
+      "label":"Too complicated / too many steps"
+    },{
+      "type": "thumb-down",
+      "id": "outOfDate",
+      "label":"Out of date"
+    },{
+      "type": "thumb-down",
+      "id": "samplesCodeIssue",
+      "label":"Samples / code issue"
+    },{
+      "type": "thumb-down",
+      "id": "otherDown",
+      "label":"Other"
+    }]
+  </template>
+  <template class="devsite-thumb-rating-up-categories">
+  [{
+      "type": "thumb-up",
+      "id": "easyToUnderstand",
+      "label":"Easy to understand"
+    },{
+      "type": "thumb-up",
+      "id": "solvedMyProblem",
+      "label":"Solved my problem"
+    },{
+      "type": "thumb-up",
+      "id": "otherUp",
+      "label":"Other"
+    }]
+  </template>
+  
+</div>
+            
+          </devsite-content>
+        </main>
+        <devsite-footer-promos class="devsite-footer">
+          
+            
+
+<nav class="devsite-footer-promos nocontent" aria-label="Promotions">
+  <ul class="devsite-footer-promos-list">
+    
+    <li class="devsite-footer-promo">
+      <a href="/protocol-buffers/docs/downloads"
+         class="devsite-footer-promo-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+       
+         
+         data-label="Footer Promo Link (index 1)"
+       
+       >
+        
+        
+        <div class="devsite-footer-promo-icon material-icons"
+             aria-hidden="true">file_download</div>
+        
+        Downloads
+      </a>
+      <div class="devsite-footer-promo-description">Protocol buffers downloads and instructions</div>
+    </li>
+    
+    <li class="devsite-footer-promo">
+      <a href="https://github.com/protocolbuffers/protobuf/releases"
+         class="devsite-footer-promo-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+       
+         
+         data-label="Footer Promo Link (index 2)"
+       
+       >
+        
+        
+          
+            <img class="devsite-footer-promo-icon"
+                 src="/site-assets/logo-github.svg"
+                 loading="lazy"
+                 alt="GitHub">
+          
+        
+        GitHub
+      </a>
+      <div class="devsite-footer-promo-description">The latest protocol buffers code and releases</div>
+    </li>
+    
+  </ul>
+</nav>
+
+          
+        </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+          
+            
+<nav class="devsite-footer-linkboxes nocontent" aria-label="Footer links">
+  
+  <ul class="devsite-footer-linkboxes-list">
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Connect</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//googledevelopers.blogspot.com"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+          
+            Blog
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//www.facebook.com/Google-Developers-967415219957038"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+          
+            Facebook
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//medium.com/google-developers"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+          
+            Medium
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//twitter.com/googledevs"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+          
+            Twitter
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//www.youtube.com/user/GoogleDevelopers"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 5)"
+            >
+          
+            YouTube
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Programs</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//www.womentechmakers.com"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+          
+            Women Techmakers
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/community/gdg"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+          
+            Google Developer Groups
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/community/experts"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+          
+            Google Developers Experts
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/community/accelerators"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+          
+            Accelerators
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/community/gdsc"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 5)"
+            >
+          
+            Google Developer Student Clubs
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Developer consoles</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//console.developers.google.com"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+          
+            Google API Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//console.cloud.google.com"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+          
+            Google Cloud Platform Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//play.google.com/apps/publish"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+          
+            Google Play Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//console.firebase.google.com"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+          
+            Firebase Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//console.actions.google.com"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 5)"
+            >
+          
+            Actions on Google Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//cast.google.com/publish"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 6)"
+            >
+          
+            Cast SDK Developer Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//chrome.google.com/webstore/developer/dashboard"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 7)"
+            >
+          
+            Chrome Web Store Dashboard
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+  </ul>
+  
+</nav>
+          
+        </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+          
+            
+
+<div class="devsite-footer-utility nocontent">
+  
+  
+  <nav class="devsite-footer-sites" aria-label="Other Google Developers websites">
+    <a href="https://developers.google.com/"
+       class="devsite-footer-sites-logo-link gc-analytics-event"
+       data-category="Site-Wide Custom Events"
+       data-label="Footer Google Developers Link">
+      <img class="devsite-footer-sites-logo"
+           src="https://www.gstatic.com/devrel-devsite/prod/v3e5e49c86560fa1d4115a3867ece7b214786f7f53a4ea5df16ed22c32fc83928/developers/images/lockup-developers.svg"
+           loading="lazy"
+           alt="Google Developers">
+    </a>
+    <ul class="devsite-footer-sites-list">
+      
+      <li class="devsite-footer-sites-item">
+        <a href="//developer.android.com"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Android Link"
+         
+         >
+          Android
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="//developer.chrome.com/home"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Chrome Link"
+         
+         >
+          Chrome
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="//firebase.google.com"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Firebase Link"
+         
+         >
+          Firebase
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="//cloud.google.com"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Google Cloud Platform Link"
+         
+         >
+          Google Cloud Platform
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="/products"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer All products Link"
+         
+         >
+          All products
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+  
+
+  
+  <nav class="devsite-footer-utility-links" aria-label="Utility links">
+    
+    <ul class="devsite-footer-utility-list">
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Terms link"
+         >
+          Terms
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="//policies.google.com/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link"
+         >
+          Privacy
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 devsite-footer-utility-button">
+        
+        <span class="devsite-footer-utility-description">Sign up for the Google Developers newsletter</span>
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Subscribe link"
+         >
+          Subscribe
+        </a>
+        
+      </li>
+      
+    </ul>
+    
+    
+    
+<devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    
+    <select aria-label="Select your language preference."
+            class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+    
+      
+      <option>Language</option>
+    
+    
+      <option value="en"
+              lang="en"
+            >
+        English
+      </option>
+    
+      <option value="id"
+              lang="id"
+            >
+        Bahasa Indonesia
+      </option>
+    
+      <option value="de"
+              lang="de"
+            >
+        Deutsch
+      </option>
+    
+      <option value="es"
+              lang="es"
+            >
+        Español
+      </option>
+    
+      <option value="fr"
+              lang="fr"
+            >
+        Français
+      </option>
+    
+      <option value="pt_br"
+              lang="pt_br"
+            >
+        Português – Brasil
+      </option>
+    
+      <option value="ru"
+              lang="ru"
+            >
+        Русский
+      </option>
+    
+      <option value="zh_cn"
+              lang="zh_cn"
+            >
+        中文 – 简体
+      </option>
+    
+      <option value="ja"
+              lang="ja"
+            >
+        日本語
+      </option>
+    
+      <option value="ko"
+              lang="ko"
+            >
+        한국어
+      </option>
+    
+    </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
+</div>
+          
+        </devsite-footer-utility>
+        <devsite-panel></devsite-panel>
+      </section></section>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar
+    
+    >
+</devsite-snackbar>
+    <devsite-tooltip ></devsite-tooltip>
+    <devsite-heading-link></devsite-heading-link>
+    <devsite-analytics analytics-iframe>
+      
+        <script type="application/json" analytics>[{"dimensions": {"dimension11": false, "dimension4": "Protocol Buffers", "dimension1": "Signed out", "dimension6": "en", "dimension3": false, "dimension5": "en"}, "gaid": "UA-24532603-1", "metrics": {"ratings_count": "metric2", "ratings_value": "metric1"}}]</script>
+<script type="application/json" gtm>{"parameters": {"freeTrialEligibleUser": "True", "internalUser": "False", "language": {"machineTranslated": "False", "requested": "en", "served": "en"}, "pageType": "product", "projectName": "Protocol Buffers", "signedIn": "False", "tenant": "developers", "recommendations": {"sourcePage": "", "sourceType": 0, "sourceRank": 0, "sourceIdenticalDescriptions": 0, "sourceTitleWords": 0, "sourceDescriptionWords": 0, "experiment": ""}}, "tags": []}</script>
+      
+    </devsite-analytics>
+    
+      <devsite-badger></devsite-badger>
+    
+    
+    <script nonce="ZTSIY4HhKTnbZkT0qVs5DoCRHW8O66">
+  
+  (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/prod/v3e5e49c86560fa1d4115a3867ece7b214786f7f53a4ea5df16ed22c32fc83928/developers/js/app_loader.js', '[1,"en",null,"/js/devsite_app_module.js","https://www.gstatic.com/devrel-devsite/prod/v3e5e49c86560fa1d4115a3867ece7b214786f7f53a4ea5df16ed22c32fc83928","https://www.gstatic.com/devrel-devsite/prod/v3e5e49c86560fa1d4115a3867ece7b214786f7f53a4ea5df16ed22c32fc83928/developers","https://developers-dot-devsite-v2-prod.appspot.com",1,null,["/_pwa/developers/manifest.json","https://www.gstatic.com/devrel-devsite/prod/v3e5e49c86560fa1d4115a3867ece7b214786f7f53a4ea5df16ed22c32fc83928/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/prod/v3e5e49c86560fa1d4115a3867ece7b214786f7f53a4ea5df16ed22c32fc83928/developers/images/favicon.png","https://fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap"],1,null,[1,6,8,12,14,17,18,21,25,40,50,63,70,75,76,80,87,91,92,93,97,98,100,101,102,103,104,105,107,108,109,110,111,112,113,115,117,118,120,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,138,140,141,144,147,148,149,150,151,152,153,154,155,156,157,159,161,163,164,165,168,169,170,173,179,182,186,191],"AIzaSyAP-jjEJBzmIyKR4F-3XITp8yM9T1gEEI8","AIzaSyB6xiKGDR5O3Ak2okS4rLkauxGUG7XP0hg","developers.google.com","AIzaSyAQk0fBONSGUqCNznf6Krs82Ap1-NV6J4o","AIzaSyCCxcqdrZ_7QMeLCRY20bh_SXdAYqy70KY"]')
+  
+</script>
+    <devsite-a11y-announce></devsite-a11y-announce>
+  </body>
+</html>

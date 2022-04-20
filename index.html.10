@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="author" href="mailto:webmasters@gnu.org" />
+<link rel="icon" type="image/png" href="/graphics/gnu-head-mini.png" />
+<meta name="ICBM" content="42.355469,-71.058627" />
+<link rel="stylesheet" type="text/css" href="/mini.css" media="handheld" />
+<link rel="stylesheet" type="text/css" href="/layout.min.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/print.min.css" media="print" />
+
+
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    (function() {
+        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://api.flattr.com/js/0.6/load.js?mode=auto';
+        t.parentNode.insertBefore(s, t);
+    })();
+/* ]]> */
+</script>
+<title>GNU IDN Library - Libidn - GNU Project - Free Software Foundation</title>
+<!-- start of server/banner.html -->
+<!-- start of head-include-2.html -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- end of head-include-2.html -->
+
+</head>
+<body>
+<div class="inner">
+<!-- start of server/body-include-1.html -->
+<div id="top">
+<a class="skip" href="#content"><b>Skip to main text</b></a>
+</div>
+
+<div id="fsf-frame" role="complementary">
+<form id="fssbox" action="https://my.fsf.org/civicrm/profile/create?reset=1&amp;gid=31"
+      method="post">
+ <div>
+  <input name="postURL" type="hidden" value="" />
+  <input type="hidden" name="group[25]" value="1" />
+  <input name="cancelURL" type="hidden" value="https://crm.fsf.org/civicrm/profile?reset=1&amp;gid=31" />
+  <input name="_qf_default" type="hidden" value="Edit:cancel" />
+  <label for="frmEmail">
+   <a href="//www.fsf.org/fss">Free Software Supporter</a>:
+  </label>
+  <input type="text" id="frmEmail" name="email-Primary" size="18" maxlength="80"
+         value="email address" onfocus="this.value=''"/>
+  <input type="submit" name="_qf_Edit_next" value="Sign up" />
+ </div>
+</form>
+
+<div id="join-fsf" class="button"><a
+href="https://www.fsf.org/associate/support_freedom?referrer=4052">JOIN&nbsp;THE&nbsp;FSF</a>
+</div>
+</div>
+
+<div id="header" role="banner">
+<p id="gnu-banner">
+ <a href="/">
+ <img src="/graphics/heckert_gnu.transp.small.png" height="48" width="49"
+      alt="&nbsp;[A GNU head]&nbsp;" /><strong>GNU</strong> <span
+ class="hide">Operating System</span></a><br />
+ <small id="fsf-support">Supported by the
+ <a href="#mission-statement">Free Software Foundation</a></small>
+</p>
+
+<div id="switches">
+ <a id="search-button" class="switch" href="//www.gnu.org/cgi-bin/estseek.cgi">
+  <img id="search-icon" height="25" width="25"
+       src="/graphics/icons/search.png"
+       alt="&nbsp;[Search www.gnu.org]&nbsp;" /></a>
+
+</div>
+</div>
+<!-- end of server/body-include-1.html -->
+
+<!-- start of server/body-include-2 -->
+
+
+<div style="clear: both"></div>
+
+<div id="navigation" role="navigation">
+ <a id="more-links" href="#navigation" title="More...">
+   <span>Site navigation</span></a>
+ <a id="less-links" href="#content"><b>Skip</b></a>
+ <ul>
+
+   <li id="tabAboutGNU"><a href="/gnu/gnu.html">ABOUT&nbsp;GNU</a></li>
+
+
+  <li id="tabPhilosophy"><a href="/philosophy/philosophy.html">PHILOSOPHY</a></li>
+
+
+  <li id="tabLicenses"><a href="/licenses/licenses.html">LICENSES</a></li>
+
+
+  <li id="tabEducation"><a href="/education/education.html">EDUCATION</a></li>
+
+
+  <li id="tabSoftware" class="active">
+     <span class='no-display'>=</span> 
+    <a href="/software/software.html">SOFTWARE</a>
+    <span class="gnun-split"></span>
+     <span class='no-display'>=</span> 
+  </li>
+
+
+  <li id="tabDistros"><a href="/distros/distros.html">DISTROS</a></li>
+
+
+  <li id="tabDoc"><a href="/doc/doc.html">DOCS</a></li>
+
+
+  <li id="tabMalware"><a href="/proprietary/proprietary.html">MALWARE</a></li>
+
+
+  <li id="tabHelp"><a href="/help/help.html">HELP&nbsp;GNU</a></li>
+
+
+  <li id="tabArt"><a href="/graphics/graphics.html">GNU&nbsp;ART</a></li>
+
+
+  <li id="tabFun"><a href="/fun/humor.html">FUN</a></li>
+
+
+  <li id="tabPeople"><a href="/people/people.html">GNU'S&nbsp;WHO?</a></li>
+
+  <li><a href="//directory.fsf.org">SOFTWARE&nbsp;DIRECTORY</a></li>
+  <li><a href="https://h-node.org/">HARDWARE</a></li>
+  <li><a href="/server/sitemap.html">SITEMAP</a></li>
+ </ul>
+ <div style="clear: both"></div>
+</div><!-- /"navigation -->
+<!-- end of server/body-include-2 -->
+
+<div id="content" role="main">
+<!-- end of server/banner.html -->
+
+<h2>GNU IDN Library - Libidn</h2>
+
+<!-- This is the template document for GNU web pages.  We use -->
+<!-- server side includes (#include) for common elements, for -->
+<!-- instance, the very first line of the file.  If you're reading -->
+<!-- this in its expanded form, you can retrieve the original source,  -->
+<!-- with the SSI statements intact, from -->
+<!-- https://web.cvs.savannah.gnu.org/viewvc/*checkout*/www/server/standards/boilerplate.html?root=www&content-type=text%2Fplain
+-->
+
+<!-- This document uses XHTML 1.0 Strict, but may be served as -->
+<!-- text/html.  Please ensure that markup style considers -->
+<!-- appendix C of the XHTML 1.0 standard. See validator.w3.org. -->
+
+<!-- Please ensure links are consistent with Apache's MultiView. -->
+<!-- Change include statements to be consistent with the relevant -->
+<!-- language, where necessary. -->
+
+<hr />
+
+<h2><a href="#TOCintroduction" name="introduction">Introduction</a></h2>
+
+<p>
+GNU Libidn is a fully documented implementation of the Stringprep,
+Punycode and IDNA 2003 specifications.  Libidn's purpose is to encode and
+decode internationalized domain names.  The native C, C# and Java
+libraries are available under the GNU Lesser General Public License
+version 2.1 or later.
+</p>
+
+<p><b>
+Please be aware that <a href="#libidn2" name="TOClibidn2">GNU libidn2</a>
+is the successor of GNU libidn.
+It comes with IDNA 2008 and TR46 implementation and also provides
+a compatibility layer for GNU libidn.
+</b></p>
+
+<p>
+The library contains a generic Stringprep implementation.  Profiles
+for Nameprep, iSCSI, SASL, XMPP and Kerberos V5 are included.
+Punycode and ASCII Compatible Encoding (ACE) via IDNA are supported.
+A mechanism to define Top-Level Domain (TLD) specific validation
+tables, and to compare strings against those tables, is included.
+Default tables for some TLDs are also included.
+</p>
+
+<p>
+The Stringprep API consists of two main functions, one for converting
+data from the system's native representation into UTF-8, and one
+function to perform the Stringprep processing.  Adding a new
+Stringprep profile for your application within the API is
+straightforward.  The Punycode API consists of one encoding function
+and one decoding function.  The IDNA API consists of the ToASCII and
+ToUnicode functions, as well as an high-level interface for converting
+entire domain names to and from the ACE encoded form.  The TLD API
+consists of one set of functions to extract the TLD name from a domain
+string, one set of functions to locate the proper TLD table to use
+based on the TLD name, and core functions to validate a string against
+a TLD table, and some utility wrappers to perform all the steps in one
+call.
+</p>
+
+<p>
+The library is used by, e.g., GNU SASL and Shishi to process user
+names and passwords.  Libidn can be built into GNU Libc to enable a
+new system-wide getaddrinfo flag for IDN processing.
+</p>
+
+<p>
+Libidn is developed for the GNU/Linux system, but runs on over 20 Unix
+platforms (including Solaris, IRIX, AIX, and Tru64) and Windows.  The
+library is written in C and (parts of) the API is also accessible from
+C++, Emacs Lisp, Python and Java.  A native Java and C# port is
+included.
+</p>
+
+<p>
+Also included is a command line tool, several self tests, code
+examples, and more, all licensed under the GNU General Public License
+version 3.0 or later.
+</p>
+
+<p>
+<a class="FlattrButton" style="display:none;"
+href="https://www.gnu.org/software/libidn/"></a>
+</p>
+
+<h2><a href="#TOCtoc" name="toc">Table of Contents</a></h2>
+
+<ul>
+  <li><a href="#introduction" name="TOCintroduction">Introduction</a></li>
+  <li><a href="#news" name="TOCnews">News</a></li>
+  <li><a href="#tryit" name="TOCtryit">Try it</a></li>
+  <li><a href="#documentation" name="TOCdocumentation">Documentation</a></li>
+  <li><a href="#downloading" name="TOCdownloading">Downloading</a></li>
+  <li><a href="#support" name="TOCsupport">Support</a></li>
+  <li><a href="#development" name="TOCdevelopment">Development</a></li>
+  <li><a href="#bugs" name="TOCbugs">Bugs</a></li>
+  <li><a href="#related" name="TOCrelated">Related implementations</a></li>
+  <li><a href="#howtouseit" name="TOChowtouseit">How to use it?</a></li>
+  <li><a href="#libidn2" name="TOClibidn2">Libidn2</a></li>
+</ul>
+
+<hr />
+
+<h2><a href="#TOCnews" name="news">News</a></h2>
+
+<p>
+  Note that new releases are only mentioned here if they introduce a
+  major feature or is significant in some other way.  Read
+  the <a href="https://mail.gnu.org/archive/html/help-libidn/">
+  help-libidn</a> mailing list if you seek more frequent
+  announcements.
+</p>
+
+<ul>
+  <li>2012-01-10: An infloop bug was fixed for the pr29 functions.
+  The library has been relicensed to dual-GPLv2+|LGPLv3+.  See the <a
+  href="https://lists.gnu.org/archive/html/help-libidn/2012-01/msg00019.html">
+  Libidn 1.24 announcement</a>.</li>
+
+  <li>2011-05-04: Quality Assurance improvements: we publish <a
+  href="clang-analyzer/">clang-analyzer reports</a> for the
+  library.</li>
+
+  <li>2011-04-20: An IDNA2008 implementation is announced
+    called <a href="#libidn2">libidn2</a>.</li>
+
+  <li>2008-10-07: Quality Assurance improvements: we
+    publish <a href="cyclo/">cyclomatic code Complexity charts</a>
+    and <a href="coverage/">self-test code coverage charts</a>.</li>
+
+  <li>2007-07-31: Version 1.0 is released, to indicate that Libidn is
+    now considered stable.  It has been used in production for several
+    years with only minor issues found.</li>
+
+  <li>2007-05-31: Libidn is now developed in git instead of cvs, there
+    is a
+    public <a href="https://git.savannah.gnu.org/gitweb/?p=libidn.git">
+    savannah git repository</a>.</li>
+
+  <li>2006-06-07: Translation of error messages are working, and the
+    library has been ported to Windows using MinGW.</li>
+
+  <li>2005-12-03: Version 0.6.0 include a native C# port, contributed
+    by Alexander Gnauck.</li>
+
+  <li>2004-11-08: GNU/Linux distribution
+    <a href="https://fedora.redhat.com/">Fedora Core 3</a> includes
+    Libidn version 0.5.6.</li>
+
+  <li>2004-10-02: Version 0.5.6 include functions
+    (e.g., <code>idna_strerror</code>) to translate from return codes
+    to human readable text strings.</li>
+
+  <li>2004-06-26: Version 0.5.0 include a
+    <a href="manual/html_node/PR29-Functions.html">
+      module to detect "problem sequences" for normalization</a> as
+    discussed in <a href="https://www.unicode.org/review/pr-29.html">
+    PR-29</a>.</li>
+
+  <li>2004-06-01: Version 0.4.8 include a native Java port, thanks to
+    Oliver Hitz.</li>
+
+  <li>2004-04-30: People interested in the specifications behind
+    libidn may be interested
+    in <a href="https://www.unicode.org/review/pr-29.html">a proposed
+    change to NFKC by the Unicode Consortium</a>.  I have
+    posted <a href="nfkc-stability.txt">a message to the IDN WG
+    mailing list</a> asking for opinions on this, but apparently the
+    list moderator is ignoring it.</li>
+
+  <li>2004-03-27: Recently a
+    <a href="https://sources.redhat.com/ml/libc-alpha/2004-03/threads.html#00131">patch</a>
+    to GNU <a href="https://www.gnu.org/software/libc/">Libc</a> has
+    been incorporated, extending the <code>getaddrinfo</code> API
+    based on my <a href="getaddrinfo-idn.txt">writeup</a>.  The API is
+    being standardized.</li>
+
+  <li>2004-02-28:
+  A <a href="https://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/devel/libidn/README.html">NetBSD
+  package</a> exists.</li>
+
+  <li>2004-02-28: Version 0.4.0 includes an experimental API for
+    (parts of) the TLD functionality described in
+    <a href="https://www.ietf.org/internet-drafts/draft-hoffman-idn-reg-02.txt">
+      draft-hoffman-idn-reg</a>.</li>
+
+  <li>2004-01-30: A Perl module
+    <a href="https://spaceship.berlios.de/index.php?page=idn.php">
+      Net::LibIDN</a> that provide Perl bindings for Libidn is
+      available, thanks to Thomas Jacob.  The page also include a
+      patch that add TLD specific awareness to Libidn.</li>
+
+  <li>2004-01-06: A <a href="https://www.freshports.org/devel/libidn/">
+      FreeBSD ports package</a> is available, thanks to Kirill
+      Ponomarew.</li>
+
+  <li>2004-01-01: Savannah had problems last month, and still isn't
+    operating fully.  CVS has been moved to a private machine, a
+    read-only mirror of it will hopefully be available via Savannah in
+    the future.</li>
+
+  <li>2003-10-29: A project with the goal of providing
+    <a href="https://php-idn.bayour.com/">PHP bindings of the Libidn
+      API</a> has been started by Turbo Fredriksson.</li>
+
+  <li>2003-10-11: Precompiled binaries for Mandrake 9.2
+    <a href="https://archives.mandrakelinux.com/cooker/2003-10/msg01025.php">
+      available</a> built as part of glibc, and
+      as <a href="https://rpmfind.net/linux/rpm2html/search.php?query=libidn">a
+      RPM package</a>, thanks to Oden Eriksson.</li>
+
+  <li>2003-10-02: Version 0.3.1 fixes all problems discovered during
+    <a href="https://idnconnect.jdna.jp/">IDNConnect</a>.</li>
+
+  <li>2003-06-26: Precompiled binaries for Cygwin available from
+    <a href="https://anfaenger.de/cygwin/libidn/">
+      https://anfaenger.de/cygwin/libidn/</a>, thanks to Gerrit
+      P. Haase.</li>
+
+  <li>2003-02-26: Version 0.1.11 includes a
+    <a href="https://www.gnu.org/software/libidn/manual/libidn.html#Invoking%20idn">
+      command line tool</a> and a
+    <a href="https://www.gnu.org/software/emacs/">Emacs</a> Lisp
+    <a href="https://www.gnu.org/software/libidn/manual/libidn.html#Emacs%20API">
+      interface</a>.</li>
+
+  <li>2003-02-21: Debian
+    <a href="https://packages.qa.debian.org/libi/libidn.html">includes
+      libidn</a>, thanks to Ryan M. Golbeck.</li>
+
+  <li>2003-02-12: Version 0.1.7 uses
+    <a href="https://savannah.gnu.org/cgi-bin/viewcvs/libidn/libidn/idna-ace-prefix.txt?rev=HEAD&amp;content-type=text/vnd.viewcvs-markup">
+      official</a> IDNA ACE prefix 'xn--'.</li>
+
+  <li>2003-01-28: Version 0.1.5 can be built as an add-on to
+    <a href="https://www.gnu.org/software/libc/">GNU Libc</a>, available
+    are <a href="https://savannah.gnu.org/cgi-bin/viewcvs/libidn/libidn/libc/README?rev=HEAD&amp;content-type=text/vnd.viewcvs-markup">
+      detailed instructions</a> and
+    <a href="https://savannah.gnu.org/cgi-bin/viewcvs/libidn/libidn/libc/example.c?rev=HEAD&amp;content-type=text/vnd.viewcvs-markup">
+      example code demonstrating the new getaddrinfo() API</a>.</li>
+
+  <li>2003-01-08: Added a <a href="inetutils-ping.txt">simple
+      patch</a> demonstrating support for IDN in the
+    <a href="https://www.gnu.org/software/inetutils/">GNU
+      InetUtils</a> <code>ping</code> utility.</li>
+
+  <li>2003-01-05: Version 0.1.0 released with Punycode and IDNA.</li>
+
+  <li>2003-01-03: Libidn is an official GNU project.</li>
+
+  <li>2002-12-26:
+    Moved <a href="https://savannah.gnu.org/projects/libidn/">
+      project to savannah</a>.  Initiated renaming of library from
+    "libstringprep" to "libidn" as the next release will implement
+    Punycode and IDNA too.</li>
+
+  <li>2002-12-13: Version 0.0.8 is ported to 20+ platforms, including
+    Microsoft Windows.</li>
+
+  <li>2002-11-07: Version 0.0.2 is now used by
+    <a href="https://www.gnu.org/software/gsasl/">GNU SASL</a>.</li>
+
+  <li>2002-11-05: Initial release of version 0.0.0.</li>
+</ul>
+
+<p>
+  Information on what is new in the library itself is found in
+  the <a href="https://git.savannah.gnu.org/gitweb/?p=libidn.git;a=blob;f=NEWS;hb=HEAD">NEWS</a>
+  file (live version).
+</p>
+
+<h2><a href="#TOCtryit" name="tryit">Try it</a></h2>
+
+<p>
+  A web interface to libidn <a href="https://josefsson.org/idn.php/">is
+    available online</a>.  Try libidn before you buy it.
+</p>
+
+<p>
+  A simple <a href="https://xn--rksmrgs-5wao1o.josefsson.org/">IDN web
+    server</a> is also available.
+</p>
+
+<h2><a href="#TOCdocumentation" name="documentation">Documentation</a></h2>
+
+<p>
+  Refer to the <a href="manual/">Libidn Manual</a> web page for links
+  to the manual in all formats; however, quick links to the most
+  popular formats:
+</p>
+
+<ul>
+  <li><a href="manual/libidn.html">Online HTML manual</a></li>
+  <li><a href="manual/libidn.pdf">PDF manual</a></li>
+  <li><a href="reference/ch01.html">C/C++ API reference manual in HTML</a></li>
+  <li><a href="javadoc/">Java API manual in HTML</a></li>
+</ul>
+
+<p>
+  You may also be interested in a
+  <a href="draft-josefsson-idn-test-vectors.html">preliminary document
+    with Nameprep and IDNA test vectors</a>.
+</p>
+
+<p>
+  See also the various standard texts:
+</p>
+
+<ul>
+  <li><a href="https://tools.ietf.org/html/rfc3490">
+      IDNA specification</a></li>
+  <li><a href="https://tools.ietf.org/html/rfc3492">
+      Punycode specification</a></li>
+  <li><a href="https://tools.ietf.org/html/rfc3454">
+      Stringprep specification</a>
+    <ul>
+      <li>Standard profiles
+	<ul>
+	  <li><a href="https://tools.ietf.org/html/rfc3491">
+	      Stringprep profile for IDN: "Nameprep"</a></li>
+	  <li><a href="https://tools.ietf.org/html/rfc3722">
+	      Stringprep profile for iSCSI: "iSCSI"</a></li>
+	  <li><a href="https://tools.ietf.org/html/rfc3920">
+	      Stringprep profile for XMPP: "Nodeprep" and "Resourceprep"</a></li>
+	  <li><a href="https://tools.ietf.org/html/rfc4013">
+	      Stringprep profile for user names and passwords: "SASLprep"</a></li>
+	  <li><a href="https://tools.ietf.org/html/rfc4505">
+	      Stringprep profile for SASL ANONYMOUS tokens: "trace"</a></li>
+	</ul>
+      </li>
+      <li>Expired profiles
+	<ul>
+	  <li><a href="https://tools.ietf.org/html/draft-zeilenga-ldapbis-strmatch-02">
+	      Stringprep profile for X.500</a></li>
+	  <li><a href="https://tools.ietf.org/html/draft-ietf-krb-wg-utf8-profile-01">
+	      Stringprep profile for Kerberos</a></li>
+	</ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="https://tools.ietf.org/html/draft-hoffman-idn-reg-02">
+      TLD specification</a></li>
+  <li><a href="https://www.iana.org/assignments/stringprep-profiles">
+      IANA Registry for Stringprep Profiles</a></li>
+</ul>
+
+<h2><a href="#TOCdownloading" name="downloading">Downloading</a></h2>
+
+<p>
+  Libidn can be found on
+  <a href="https://ftp.gnu.org/gnu/libidn/">https://ftp.gnu.org/gnu/libidn/</a>
+  [via HTTPS] and
+  <a href="ftp://ftp.gnu.org/gnu/libidn/">ftp://ftp.gnu.org/gnu/libidn/</a>
+  [via FTP].  It can also be found on one
+  of <a href="/prep/ftp.html">our FTP mirrors</a>; please use a mirror
+  if possible.
+</p>
+
+<p>
+  All official releases are signed with
+  an <a href="https://josefsson.org/key.txt">OpenPGP key with
+  fingerprint 0xB565716F</a> or with OpenPGP key 0x08302DB6A2670428.
+</p>
+
+<h2><a href="#TOCsupport" name="support">Support</a></h2>
+
+<p>
+  A mailing list where users of Libidn may help each other exists, and
+  you can reach it by sending e-mail
+  to <a href="mailto:help-libidn@gnu.org">help-libidn@gnu.org</a>.
+  Archives of the mailing list discussions, and an interface to manage
+  subscriptions, is available through the World Wide Web at
+<a href="https://lists.gnu.org/mailman/listinfo/help-libidn">
+https://lists.gnu.org/mailman/listinfo/help-libidn</a>.
+</p>
+
+<p>
+  If you are interested in paid support for Libidn, or sponsor the
+  development, please <a href="mailto:simon@josefsson.org">contact
+  me</a>.  If you provide paid services for Libidn, and would like to
+  be mentioned here, also <a href="mailto:simon@josefsson.org">contact
+  me</a>.
+</p>
+
+<p>
+  If you find Libidn useful, please consider making a donation.  No
+  amount is too small!
+</p>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+  <p><input type="hidden" name="cmd" value="_xclick" />
+    <input type="hidden" name="business" value="simon@josefsson.org" />
+    <input type="hidden" name="item_name" value="Simon Josefsson" />
+    <input type="hidden" name="item_number" value="GNU Libidn" />
+    <input type="hidden" name="no_shipping" value="1" />
+    <input type="hidden" name="cn" value="Comment" />
+    <input type="hidden" name="currency_code" value="EUR" />
+    <input type="hidden" name="tax" value="0" />
+    <input type="hidden" name="bn" value="PP-DonationsBF" />
+    <input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but04.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" />
+    <a class="FlattrButton" style="display:none;"
+       href="https://www.gnu.org/software/libidn/"></a>
+  </p>
+</form>
+
+<h2><a href="#TOCdevelopment" name="development">Development</a></h2>
+
+<p>
+  There is
+  a <a href="https://savannah.gnu.org/projects/libidn/">Savannah
+  Libidn</a> project page.  You
+  can <a href="https://savannah.gnu.org/git/?group=libidn">check out
+  the sources</a> by using <a href="https://git.or.cz/">git</a> as
+  follows:
+</p>
+
+<pre>
+$ git clone git://git.savannah.gnu.org/libidn.git
+</pre>
+
+<p>
+  The <a href="https://git.savannah.gnu.org/gitweb/?p=libidn.git">online
+    git interface</a> is available.
+</p>
+
+<p>
+  For every release, we publish <a href="cyclo/">cyclomatic code
+  complexity charts</a> for the package.  There is
+  also <a href="coverage/">self-test code coverage charts</a>
+  available.  Finally, <a href="clang-analyzer/">clang-analyzer</a>
+  output is also available.
+</p>
+
+<h2><a href="#TOCbugs" name="bugs">Bugs</a></h2>
+
+<p>
+  Report all problems
+  to <a href="mailto:bug-libidn@gnu.org">bug-libidn@gnu.org</a>, but
+  please read the manual
+  on <a href="manual/libidn.html#Bug-Reports">how to report bugs</a>
+  first.
+</p>
+
+<h2><a href="#TOCrelated" name="related">Related implementations</a></h2>
+
+<p>
+  The following is a list of links to other free IDN, or otherwise
+  related, implementations.  The list is not
+  conclusive, <a href="mailto:bug-libidn@gnu.org">suggestions</a>
+  appreciated.
+</p>
+
+<ul>
+  <li><a href="https://www.nic.ad.jp/ja/idn/idnkit/download/">JPNIC idnkit</a></li>
+  <li><a href="https://docs.python.org/library/codecs.html?highlight=idna#module-encodings.idna">Python IDNA</a></li>
+  <li><a href="https://icu.sourceforge.net/">IBM ICU</a></li>
+</ul>
+
+<p>
+  Projects using GNU Libidn include:
+</p>
+
+<ul>
+    <li><a href="https://www.gnu.org/software/emacs/">
+	GNU Emacs</a>, in the <a href="https://www.gnus.org/">
+	Gnus</a> news reader.</li>
+    <li><a href="https://www.gnu.org/software/libc/">GNU Libc</a></li>
+    <li><a href="../shishi/">GNU Shishi</a></li>
+    <li><a href="../gsasl/">GNU SASL</a></li>
+    <li><a href="https://jabberd.jabberstudio.org/2/">jabberd</a></li>
+    <li><a href="https://www.mutt.org/">Mutt</a> mail reader.</li>
+    <li><a href="https://elinks.or.cz/">Elinks</a> web browser</li>
+    <li><a href="https://camaya.net/gloox">Gloox</a>, a Jabber/XMPP library</li>
+    <li><a href="https://www.kde.org/">KDE</a>, for all domain name lookups</li>
+    <li><a href="https://search.cpan.org/~thor/Net-LibIDN/">Net::LibIDN</a>, perl bindings</li>
+    <li><a href="https://idn.rubyforge.org/docs/">LibIDN Ruby bindings</a></li>
+    <li><a href="https://curl.haxx.se/">cURL</a></li>
+    <li><a href="https://www.xarg.org/project/php-idna/">PHP IDNA Extension</a></li>
+  </ul>
+
+  <p>
+  Projects using libidn2 include:
+  </p>
+
+  <ul>
+    <li><a href="https://www.gnu.org/software/wget">Wget</a></li>
+    <li><a href="https://gitlab.com/gnuwget/wget2">Wget2</a></li>
+    <li><a href="https://github.com/curl/curl">Curl</a></li>
+    <li><a href="https://gitlab.com/gnutls/gnutls">GnuTLS</a></li>
+    <li><a href="https://github.com/rockdaboot/libpsl">libpsl</a></li>
+  </ul>
+
+  <p>
+  Let us <a href="mailto:bug-libidn@gnu.org">know</a> about more
+  projects that use GNU Libidn!
+</p>
+
+<h2><a href="#TOChowtouseit" name="howtouseit">How to use it?</a></h2>
+
+<p>
+  Read data from user, convert it to UTF-8 and then pass it to
+  stringprep().  Example code below (it is included in the
+  distribution as example.c).  To simplify compiling,
+  use <a href="https://www.gnu.org/software/libtool/libtool.html">libtool</a>
+  and <a href="https://www.freedesktop.org/software/pkgconfig/">pkg-config</a>.
+  More information and more examples are included in
+  the <a href="#documentation">manual</a>.
+</p>
+
+<p>
+  See also the other example*.c files in the source distribution on
+  how to use other features of the library (punycode, IDNA).
+</p>
+
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+/*
+ * Compiling using libtool and pkg-config is recommended:
+ *
+ * $ libtool cc -o example example.c `pkg-config --cflags --libs libidn`
+ * $ ./example
+ * Input string encoded as `ISO-8859-1': &ordf;
+ * Before locale2utf8 (length 2): aa 0a
+ * Before stringprep (length 3): c2 aa 0a
+ * After stringprep (length 2): 61 0a
+ * $
+ *
+ */
+
+int main(int argc, char *argv[])
+{
+  char buf[BUFSIZ];
+  char *p;
+  int rc, i;
+
+  printf("Input string encoded as `%s': ",
+	 stringprep_locale_charset ());
+  fflush(stdout);
+  fgets(buf, BUFSIZ, stdin);
+
+  printf("Before locale2utf8 (length %d): ", strlen(buf));
+  for (i=0; i &lt; strlen(buf); i++)
+    printf("%02x ", buf[i] &amp; 0xFF);
+  printf("\n");
+
+  p = stringprep_locale_to_utf8 (buf);
+  if (p)
+    {
+      strcpy(buf, p);
+      free(p);
+    }
+  else
+    printf("Could not convert string to UTF-8, continuing anyway...\n");
+
+  printf("Before stringprep (length %d): ", strlen(buf));
+  for (i=0; i &lt; strlen(buf); i++)
+    printf("%02x ", buf[i] &amp; 0xFF);
+  printf("\n");
+
+  rc = stringprep(buf, BUFSIZ, 0, stringprep_nameprep);
+  if (rc != STRINGPREP_OK)
+    printf("Stringprep failed with rc %d...\n", rc);
+  else
+    {
+      printf("After stringprep (length %d): ", strlen(buf));
+      for (i=0; i &lt; strlen(buf); i++)
+        printf("%02x ", buf[i] &amp; 0xFF);
+      printf("\n");
+    }
+
+  return 0;
+}
+</pre>
+
+<h2><a href="#TOClibidn2" name="libidn2">Libidn2</a></h2>
+
+<p>
+  Libidn2 is an implementation of the IDNA2008 + TR46 specifications (<a
+  href="https://tools.ietf.org/html/rfc5890">RFC 5890</a>, <a
+  href="https://tools.ietf.org/html/rfc5891">RFC 5891</a>, <a
+  href="https://tools.ietf.org/html/rfc5892">RFC 5892</a>, <a
+  href="https://tools.ietf.org/html/rfc5893">RFC 5893</a>, <a
+  href="https://www.unicode.org/reports/tr46/">TR 46</a>).  Libidn2 is
+  a standalone library, without any dependency on Libidn.  Libidn2 is
+  believed to be a complete IDNA2008 / TR46 implementation, but has yet to be
+  as extensively used as the original Libidn library. Its development
+  takes place <a href="https://gitlab.com/libidn/libidn2">on the gitlab
+  project pages</a>.
+</p>
+    
+<p>
+  Libidn2 uses <a href="https://www.gnu.org/software/libunistring/">GNU
+    libunistring</a> for Unicode processing
+  and <a href="https://www.gnu.org/software/libiconv/">GNU libiconv</a>
+  for character set conversion.
+</p>
+
+<p>
+  Libidn2 can be downloaded from
+  <a href="https://ftp.gnu.org/gnu/libidn/">https://ftp.gnu.org/gnu/libidn/</a>
+  [via HTTPS] and
+  <a href="ftp://ftp.gnu.org/gnu/libidn/">ftp://ftp.gnu.org/gnu/libidn/</a>
+  [via FTP].  It can also be found on one
+  of <a href="/prep/ftp.html">our FTP mirrors</a>; please use a mirror
+  if possible.
+</p>
+    
+<p>
+  The following documentation of libidn2 exists:
+</p>
+
+<ul>
+  
+  <li><a href="https://libidn.gitlab.io/libidn2/manual/libidn2.html">Libidn2 HTML Manual</a>,
+    generated by Texinfo</li>
+
+  <li><a href="https://libidn.gitlab.io/libidn2/reference/libidn2-idn2.h.html">API Reference</a>,
+    generated by GTK-DOC</li>
+
+</ul>
+
+<p>
+  The source code <a href="https://gitlab.com/libidn/libidn2">git
+    repository</a> is hosted
+  by <a href="https://gitlab.com/">Gitlab</a>.
+</p>
+
+<p>
+  For Quality Assurance, we
+  publish <a href="https://libidn.gitlab.io/libidn2/coverage/">code
+  coverage report</a> and <a href="libidn2/clang-analyzer">clang
+  static analyzer output</a>.
+</p>
+
+<p>
+  Initial development of Libidn2 has been sponsored
+  by <a href="https://www.denic.de/">DENIC</a>.
+</p>
+
+<hr />
+
+<p>
+  <a href="https://validator.w3.org/check?uri=referer">
+    <img src="https://www.w3.org/Icons/valid-xhtml10"
+	 alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+</p>
+
+<!-- If needed, change the copyright block at the bottom. In general,
+     all pages on the GNU web server should have the section about
+     verbatim copying.  Please do NOT remove this without talking
+     with the webmasters first.
+     Please make sure the copyright date is consistent with the document
+     and that it is like this: "2001, 2002", not this: "2001-2002". -->
+</div><!-- for id="content", starts in the include above -->
+
+              <!-- begin server/footer-text.html -->
+
+
+
+
+
+<div style="clear:both"></div>
+
+
+
+<div id="mission-statement" role="complementary">
+ <div class="backtotop">
+  <hr class="no-display" />
+  <a href="#header"><span>BACK TO TOP </span>&#9650;</a>
+ </div>
+<div style="clear: both"></div>
+<blockquote>
+<p style="direction:ltr; text-align:left"><a href="//www.fsf.org"><img id="fsfbanner"
+src="/graphics/fsf-logo-notext-small.png" alt="&nbsp;[FSF logo]&nbsp;"
+width="75" height="25" /></a><strong>
+&ldquo;The Free Software Foundation (FSF) is a nonprofit with a worldwide
+mission to promote computer user freedom. We defend the rights of all
+software users.&rdquo;</strong></p>
+</blockquote>
+
+<div id="support-the-fsf" class="button">
+ <a class="join" href="//www.fsf.org/associate/support_freedom?referrer=4052">JOIN</a>
+ <a class="donate" href="//donate.fsf.org/">DONATE</a>
+ <a class="shop" href="//shop.fsf.org/">SHOP</a>
+</div>
+</div>
+<!-- end server/footer-text.html -->
+
+
+<div id="footer">
+
+<p>Please send general FSF &amp; GNU inquiries to
+<a href="mailto:gnu@gnu.org">&lt;gnu@gnu.org&gt;</a>.
+There are also <a href="/contact/">other ways to contact</a>
+the FSF.<br />
+Please send broken links and other corrections or suggestions to
+<a href="mailto:bug-baz@gnu.org">&lt;bug-baz@gnu.org&gt;</a>.</p>
+
+<p>Please see the <a
+href="/server/standards/README.translations.html">Translations
+README</a> for information on coordinating and submitting translations
+of this article.</p>
+
+<p>Copyright &copy; 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Free Software Foundation, Inc.</p>
+
+<p>This page is licensed under a <a rel="license"
+href="https://creativecommons.org/licenses/by-nd/3.0/us/">Creative
+Commons Attribution-NoDerivs 3.0 United States License</a>.</p>
+
+<p>Updated:
+<!-- timestamp start -->
+$Date: 2021/07/19 15:26:46 $
+<!-- timestamp end -->
+</p>
+</div>
+
+<div id="translations">
+<h4>Translations of this page</h4>
+
+<!-- Please keep this list alphabetical by language code.
+     Comment what the language is for each type, i.e. de is German.
+     Write the language name in its own language (Deutsch) in the text.
+     If you add a new language here, please
+     advise web-translators@gnu.org and add it to
+      - /home/www/html/server/standards/README.translations.html
+      - one of the lists under the section "Translations Underway"
+      - if there is a translation team, you also have to add an alias
+      to mail.gnu.org:/com/mailer/aliases
+     Please also check you have the language code right; see:
+     https://www.loc.gov/standards/iso639-2/php/code_list.php
+     If the 2-letter ISO 639-1 code is not available,
+     use the 3-letter ISO 639-2.
+     Please use W3C normative character entities.
+
+     See also '(web-trans)Capitalization':
+     https://gnu.org/software/trans-coord/manual/web-trans/html_node/Capitalization.html
+     -->
+
+<ul class="translations-list">
+<!-- English -->
+<li><a href="/software/libidn/index.html">English</a>&nbsp;[en]</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

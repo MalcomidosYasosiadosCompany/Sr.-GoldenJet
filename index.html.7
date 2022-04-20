@@ -1,0 +1,4315 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="defaultLanguage" content="en">
+    <meta name="availableLanguages" content="en, es, fr, ja, pt_BR, uk, el, de, zh_Hans, zh_Hant, ru, he, eo">
+
+    
+
+    <title>pypiserver · PyPI</title>
+    <meta name="description" content="A minimal PyPI server for use with pip/easy_install.">
+
+    <link rel="stylesheet" href="/static/css/warehouse-ltr.725c5f70.css">
+    <link rel="stylesheet" href="/static/css/fontawesome.6002a161.css">
+    <link rel="stylesheet" href="/static/css/regular.98fbf39a.css">
+    <link rel="stylesheet" href="/static/css/solid.c3b5f0b5.css">
+    <link rel="stylesheet" href="/static/css/brands.2c303be1.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,600,600italic,700,700italic%7CSource+Code+Pro:500">
+    <noscript>
+      <link rel="stylesheet" href="/static/css/noscript.d4ce1e76.css">
+    </noscript>
+
+    
+
+    <link rel="icon" href="/static/images/favicon.6a76275d.ico" type="image/x-icon">
+
+    <link rel="alternate" type="application/rss+xml" title="RSS: 40 latest updates" href="/rss/updates.xml">
+    <link rel="alternate" type="application/rss+xml" title="RSS: 40 newest packages" href="/rss/packages.xml">
+    <link rel="alternate" type="application/rss+xml" title="RSS: latest releases for pypiserver" href="/rss/project/pypiserver/releases.xml">
+    
+    <link rel="canonical" href="https://pypi.org/project/pypiserver/">
+    
+
+    <meta property="og:url" content="https://pypi.org/project/pypiserver/">
+    <meta property="og:site_name" content="PyPI">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://pypi.org/static/images/twitter.6fecba6f.jpg">
+    <meta property="og:title" content="pypiserver">
+    <meta property="og:description" content="A minimal PyPI server for use with pip/easy_install.">
+    
+
+
+
+    <link rel="search" type="application/opensearchdescription+xml" title="PyPI" href="/opensearch.xml">
+
+    
+    <script async
+            data-ga-id="UA-55961911-1"
+            src="/static/js/warehouse.deaaafda.js">
+    </script>
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-55961911-1"></script>
+    <script defer src="https://www.fastly-insights.com/insights.js?k=6a52360a-f306-421e-8ed5-7417d0d4a4e9&dnt=true"></script>
+    <script async
+        src="https://media.ethicalads.io/media/client/v1.4.0/ethicalads.min.js"
+        integrity="sha256-U3hKDidudIaxBDEzwGJApJgPEf2mWk6cfMWghrAa6i0= sha384-UcmsCqcNRSLW/dV3Lo1oCi2/VaurXbib6p4HyUEOeIa/4OpsrnucrugAefzVZJfI sha512-q4t1L4xEjGV2R4hzqCa41P8jrgFUS8xTb8rdNv4FGvw7FpydVj/kkxBJHOiaoxHa8olCcx1Slk9K+3sNbsM4ug=="
+        crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body data-controller="viewport-toggle">
+    
+
+    <!-- Accessibility: this link should always be the first piece of content inside the body-->
+    <a href="#content" class="skip-to-content">Skip to main content</a>
+
+    <button type="button" class="button button--primary button--switch-to-mobile hidden" data-target="viewport-toggle.switchToMobile" data-action="viewport-toggle#switchToMobile">
+      Switch to mobile version
+    </button>
+
+    <div id="sticky-notifications" class="stick-to-top js-stick-to-top">
+      <!-- Add browser warning. Will show for ie9 and below -->
+      <!--[if IE]>
+      <div class="notification-bar notification-bar--warning" role="status">
+        <span class="notification-bar__icon">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          <span class="sr-only">Warning</span>
+        </span>
+        <span class="notification-bar__message">You are using an unsupported browser, upgrade to a newer version.</span>
+      </div>
+      <![endif]-->
+      
+      <noscript>
+      <div class="notification-bar notification-bar--warning" role="status">
+        
+        <span class="notification-bar__icon">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          <span class="sr-only">Warning</span>
+        </span>
+        <span class="notification-bar__message">Some features may not work without JavaScript. Please try enabling it if you encounter problems.</span>
+      </div>
+      </noscript>
+
+      
+        <div data-html-include="/_includes/notification-banners/">
+        </div>
+      
+    </div>
+
+    
+      <div data-html-include="/_includes/flash-messages/">
+      </div>
+    
+
+    
+
+    
+      <div data-html-include="/_includes/session-notifications/">
+      </div>
+    
+
+    <header class="site-header ">
+      <div class="site-container">
+        <div class="split-layout">
+          
+          <div class="split-layout">
+            <div>
+              <a class="site-header__logo" href="/">
+                <img alt="PyPI" src="/static/images/logo-small.95de8436.svg">
+              </a>
+            </div>
+
+            <form class="search-form search-form--primary" action="/search/" role="search">
+              <label for="search" class="sr-only">Search PyPI</label>
+              <input id="search" class="search-form__search" type="text" name="q" placeholder="Search projects" value="" autocomplete="off" autocapitalize="off" spellcheck="false" data-controller="search-focus" data-action="keydown@window->search-focus#focusSearchField" data-target="search-focus.searchField">
+              
+              <button type="submit" class="search-form__button">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <span class="sr-only">Search</span>
+              </button>
+            </form>
+          </div>
+          
+
+          <div data-html-include="/_includes/current-user-indicator/">
+            <div id="user-indicator" class="horizontal-menu horizontal-menu--light horizontal-menu--tall">
+  <nav class="horizontal-menu horizontal-menu--light horizontal-menu--tall hide-on-tablet" aria-label="Main navigation">
+    <ul>
+      <li class="horizontal-menu__item"><a href="/help/" class="horizontal-menu__link">Help</a></li>
+      <li class="horizontal-menu__item"><a href="/sponsors/" class="horizontal-menu__link">Sponsors</a></li>
+      <li class="horizontal-menu__item"><a href="/account/login/" class="horizontal-menu__link">Log in</a></li>
+      <li class="horizontal-menu__item"><a href="/account/register/" class="horizontal-menu__link">Register</a></li>
+    </ul>
+  </nav>
+  <nav class="dropdown dropdown--on-menu hidden show-on-tablet" aria-label="Main navigation">
+    <button type="button" class="horizontal-menu__link dropdown__trigger" aria-haspopup="true" aria-expanded="false" aria-label="View menu">
+      Menu
+      <span class="dropdown__trigger-caret">
+        <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </span>
+    </button>
+    <ul class="dropdown__content" aria-hidden="true" aria-label="Main menu">
+      <li><a class="dropdown__link" href="/help/">Help</a></li>
+      <li><a class="dropdown__link" href="/sponsors/">Sponsors</a></li>
+      <li><a class="dropdown__link" href="/account/login/">Log in</a></li>
+      <li><a class="dropdown__link" href="/account/register/">Register</a></li>
+    </ul>
+  </nav>
+</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <div class="mobile-search">
+      <form class="search-form search-form--fullwidth" action="/search/" role="search">
+        <label for="mobile-search" class="sr-only">Search PyPI</label>
+        <input id="mobile-search" class="search-form__search" type="text" name="q" placeholder="Search projects" value="" autocomplete="off" autocapitalize="off" spellcheck="false">
+        
+        <button type="submit" class="search-form__button">
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <span class="sr-only">Search</span>
+        </button>
+      </form>
+    </div>
+    
+
+    <main id="content">
+      
+<div data-html-include="/_includes/administer-project-include/pypiserver">
+</div>
+<div class="banner">
+  <div class="package-header">
+    <div class="package-header__left">
+      <h1 class="package-header__name">
+        pypiserver 1.4.2
+      </h1>
+
+      
+      <p class="package-header__pip-instructions">
+        <span id="pip-command">pip install pypiserver</span>
+        <button type="button" class="copy-tooltip copy-tooltip-s" data-clipboard-target="#pip-command" data-tooltip-label="Copy to clipboard">
+          <i class="fa fa-copy" aria-hidden="true"></i>
+          <span class="sr-only">Copy PIP instructions</span>
+        </button>
+      </p>
+      
+    </div>
+
+    <div class="package-header__right">
+    
+      
+      <a class="status-badge status-badge--good" href="/project/pypiserver/">
+        <span>Latest version</span>
+      </a>
+      
+    
+      <p class="package-header__date">
+        Released: <time datetime="2020-10-10T13:17:54+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Oct 10, 2020
+</time>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="horizontal-section horizontal-section--grey horizontal-section--thin">
+  <div class="site-container">
+    <div class="split-layout split-layout--middle package-description">
+    
+      <p class="package-description__summary">A minimal PyPI server for use with pip/easy_install.</p>
+    
+    <div data-html-include="/_includes/edit-project-button/pypiserver">
+    </div>
+    </div>
+  </div>
+</div>
+
+<div data-controller="project-tabs">
+  <div class="tabs-container">
+    <div class="vertical-tabs">
+      <div class="vertical-tabs__tabs">
+        <div class="sidebar-section">
+          <h3 class="sidebar-section__title">Navigation</h3>
+          <nav aria-label="Navigation for pypiserver">
+            <ul class="vertical-tabs__list" role="tablist">
+              <li role="tab">
+                <a id="description-tab" href="#description" data-target="project-tabs.tab" data-action="project-tabs#onTabClick" class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--is-active" aria-selected="true" aria-label="Project description. Focus will be moved to the description.">
+                  <i class="fa fa-align-left" aria-hidden="true"></i>
+                  Project description
+                </a>
+              </li>
+              <li role="tab">
+                <a id="history-tab" href="#history" data-target="project-tabs.tab" data-action="project-tabs#onTabClick" class="vertical-tabs__tab vertical-tabs__tab--with-icon" aria-label="Release history. Focus will be moved to the history panel.">
+                  <i class="fa fa-history" aria-hidden="true"></i>
+                  Release history
+                </a>
+              </li>
+              
+              <li role="tab">
+                <a id="files-tab" href="#files" data-target="project-tabs.tab" data-action="project-tabs#onTabClick" class="vertical-tabs__tab vertical-tabs__tab--with-icon" aria-label="Download files. Focus will be moved to the project files.">
+                  <i class="fa fa-download" aria-hidden="true"></i>
+                  Download files
+                </a>
+              </li>
+              
+            </ul>
+          </nav>
+        </div>
+        
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Project links</h3>
+  <ul class="vertical-tabs__list">
+    
+    
+    <li>
+      <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed" href="https://github.com/pypiserver/pypiserver" rel="nofollow">
+        
+
+
+  
+
+
+<i class="fas fa-home" aria-hidden="true"></i>Homepage
+      </a>
+    </li>
+    
+    
+  </ul>
+</div>
+
+
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Statistics</h3>
+  
+  <div class="github-repo-info hidden" data-url="https://api.github.com/repos/pypiserver/pypiserver">
+    GitHub statistics:
+    <ul class="vertical-tabs__list">
+      <li>
+        <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed github-repo-info__item"
+           data-key="html_url" data-attr="href" data-supplement="/stargazers" rel="noopener">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <strong>Stars:</strong>
+          <span class="github-repo-info__item" data-key="stargazers_count"></span>
+        </a>
+      </li>
+      <li>
+        <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed github-repo-info__item"
+           data-key="html_url" data-attr="href" data-supplement="/network/members" rel="noopener">
+          <i class="fa fa-code-branch" aria-hidden="true"></i>
+          <strong>Forks:</strong>
+          <span class="github-repo-info__item" data-key="forks_count"></span>
+        </a>
+      </li>
+      <li>
+        <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed github-repo-info__item"
+           data-key="html_url" data-attr="href" data-supplement="/issues" rel="noopener">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          <strong>Open issues/PRs:</strong>
+          <span class="github-repo-info__item" data-key="open_issues_count"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  <p>
+    View statistics for this project via <a href="https://libraries.io/pypi/pypiserver" title="External link" target="_blank" rel="noopener">Libraries.io</a>, or by using <a href="https://packaging.python.org/guides/analyzing-pypi-package-downloads/" target="_blank" rel="noopener">our public dataset on Google BigQuery</a>
+  </p>
+</div>
+
+
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Meta</h3>
+  
+  <p><strong>License:</strong> BSD License, zlib/libpng License</p>
+  
+  
+  
+    <p><strong>Maintainer:</strong> <a href="mailto:ankostis@gmail.com">Kostis Anagnostopoulos &lt;ankostis@gmail.com&gt;Matthew Planchard &lt;mplanchard@gmail.com&gt;</a></p>
+  
+  
+  
+  <p>
+    <strong>Requires:</strong> Python &gt;=2.7,  !=3.0.*,  !=3.1.*,  !=3.2.*,  !=3.3.*
+  </p>
+  
+</div>
+
+
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Maintainers</h3>
+  
+    
+    <span class="sidebar-section__maintainer">
+      <a href="/user/ankostis/" aria-label="ankostis">
+        <span class="sidebar-section__user-gravatar">
+          <img src="https://warehouse-camo.ingress.cmh1.psfhosted.org/b2e8b9f791a10ea90a0689dd39004a7acfd26047/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f38663964336232373261373430373065396261346163646337623937353362313f73697a653d3530" height="50" width="50" alt="Avatar for ankostis from gravatar.com" title="Avatar for ankostis from gravatar.com">
+        </span>
+        <span class="sidebar-section__user-gravatar-text">
+          ankostis
+        </span>
+      </a>
+    </span>
+  
+    
+    <span class="sidebar-section__maintainer">
+      <a href="/user/deemetree/" aria-label="deemetree">
+        <span class="sidebar-section__user-gravatar">
+          <img src="https://warehouse-camo.ingress.cmh1.psfhosted.org/caacc08c80aecb6e43b83530c2b1d486b6b0e822/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f34656331626330623036663139353665313838346161363066613430373163393f73697a653d3530" height="50" width="50" alt="Avatar for deemetree from gravatar.com" title="Avatar for deemetree from gravatar.com">
+        </span>
+        <span class="sidebar-section__user-gravatar-text">
+          deemetree
+        </span>
+      </a>
+    </span>
+  
+    
+    <span class="sidebar-section__maintainer">
+      <a href="/user/mplanchard/" aria-label="mplanchard">
+        <span class="sidebar-section__user-gravatar">
+          <img src="https://warehouse-camo.ingress.cmh1.psfhosted.org/c3cf8136e42657b43624f0a947c697cb378eb346/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f33666530356631663263613538386565393938346361666430383635623439303f73697a653d3530" height="50" width="50" alt="Avatar for mplanchard from gravatar.com" title="Avatar for mplanchard from gravatar.com">
+        </span>
+        <span class="sidebar-section__user-gravatar-text">
+          mplanchard
+        </span>
+      </a>
+    </span>
+  
+    
+    <span class="sidebar-section__maintainer">
+      <a href="/user/ror6ax/" aria-label="ror6ax">
+        <span class="sidebar-section__user-gravatar">
+          <img src="https://warehouse-camo.ingress.cmh1.psfhosted.org/ea681a1b4f0322b48ac4e83e485fc18083dfcde5/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f38303338643836353865393737383962396631646335353634653662636633353f73697a653d3530" height="50" width="50" alt="Avatar for ror6ax from gravatar.com" title="Avatar for ror6ax from gravatar.com">
+        </span>
+        <span class="sidebar-section__user-gravatar-text">
+          ror6ax
+        </span>
+      </a>
+    </span>
+  
+    
+    <span class="sidebar-section__maintainer">
+      <a href="/user/schmir/" aria-label="schmir">
+        <span class="sidebar-section__user-gravatar">
+          <img src="https://warehouse-camo.ingress.cmh1.psfhosted.org/e50ae10f7d290038600b9bda5f9adbb6d5a18db8/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f31353438653133303838653066386535356332356634633534336164393134303f73697a653d3530" height="50" width="50" alt="Avatar for schmir from gravatar.com" title="Avatar for schmir from gravatar.com">
+        </span>
+        <span class="sidebar-section__user-gravatar-text">
+          schmir
+        </span>
+      </a>
+    </span>
+  
+</div>
+
+
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Classifiers</h3>
+  <ul class="sidebar-section__classifiers">
+    
+    <li>
+      <strong>Development Status</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Development+Status+%3A%3A+5+-+Production%2FStable">
+            5 - Production/Stable
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li>
+      <strong>Environment</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Environment+%3A%3A+Web+Environment">
+            Web Environment
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li>
+      <strong>Intended Audience</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Intended+Audience+%3A%3A+Developers">
+            Developers
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Intended+Audience+%3A%3A+System+Administrators">
+            System Administrators
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li>
+      <strong>License</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=License+%3A%3A+OSI+Approved+%3A%3A+BSD+License">
+            OSI Approved :: BSD License
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=License+%3A%3A+OSI+Approved+%3A%3A+zlib%2Flibpng+License">
+            OSI Approved :: zlib/libpng License
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li>
+      <strong>Operating System</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Operating+System+%3A%3A+MacOS+%3A%3A+MacOS+X">
+            MacOS :: MacOS X
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Operating+System+%3A%3A+Microsoft+%3A%3A+Windows">
+            Microsoft :: Windows
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Operating+System+%3A%3A+OS+Independent">
+            OS Independent
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Operating+System+%3A%3A+POSIX">
+            POSIX
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li>
+      <strong>Programming Language</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+2">
+            Python :: 2
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+2.7">
+            Python :: 2.7
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3">
+            Python :: 3
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.5">
+            Python :: 3.5
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.6">
+            Python :: 3.6
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.7">
+            Python :: 3.7
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.8">
+            Python :: 3.8
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+Implementation+%3A%3A+CPython">
+            Python :: Implementation :: CPython
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+Implementation+%3A%3A+PyPy">
+            Python :: Implementation :: PyPy
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li>
+      <strong>Topic</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Topic+%3A%3A+Software+Development+%3A%3A+Build+Tools">
+            Software Development :: Build Tools
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Topic+%3A%3A+System+%3A%3A+Software+Distribution">
+            System :: Software Distribution
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+  </ul>
+</div>
+
+        <div class="sidebar-section" data-ea-publisher="psf" data-ea-type="psf" data-ea-keywords="pypi-sidebar"></div>
+
+      </div>
+      <div class="vertical-tabs__panel">
+        <!-- mobile menu -->
+        <nav aria-label="Navigation for pypiserver">
+          <ul class="vertical-tabs__list" role="tablist">
+            <li role="tab">
+              <a id="mobile-description-tab" href="#description" data-target="project-tabs.mobileTab" data-action="project-tabs#onTabClick" class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--mobile vertical-tabs__tab--no-top-border vertical-tabs__tab--is-active" aria-selected="true" aria-label="Project description. Focus will be moved to the description.">
+                <i class="fa fa-align-left" aria-hidden="true"></i>
+                Project description
+              </a>
+            </li>
+            <li role="tab">
+              <a id="mobile-data-tab" href="#data" data-target="project-tabs.mobileTab" data-action="project-tabs#onTabClick" class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--mobile" aria-label="Project details. Focus will be moved to the project details.">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                Project details
+              </a>
+            </li>
+            <li role="tab">
+              <a id="mobile-history-tab" href="#history" data-target="project-tabs.mobileTab" data-action="project-tabs#onTabClick" class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--mobile" aria-label="Release history. Focus will be moved to the history panel.">
+              <i class="fa fa-history" aria-hidden="true"></i>
+              Release history
+            </a>
+            </li>
+            
+            <li role="tab">
+              <a id="mobile-files-tab" href="#files" data-target="project-tabs.mobileTab" data-action="project-tabs#onTabClick" class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--mobile" aria-label="Download files. Focus will be moved to the project files.">
+                <i class="fa fa-download" aria-hidden="true"></i>
+                Download files
+              </a>
+            </li>
+            
+          </ul>
+        </nav>
+
+        
+        <div id="description" data-target="project-tabs.content" class="vertical-tabs__content" role="tabpanel" aria-labelledby="description-tab mobile-description-tab" tabindex="-1">
+          <h2 class="page-title">Project description</h2>
+          
+          <div class="project-description">
+            <img alt=pypiserver_logo.png class=align-center src="https://warehouse-camo.ingress.cmh1.psfhosted.org/afdeab5311cefc0d95e282dd07aa7d8124342a19/707970697365727665725f6c6f676f2e706e67" width=300px>
+<div id=pypiserver-minimal-pypi-server-for-use-with-pip-easy-install>
+<h2><a href=#table-of-contents rel=nofollow>pypiserver - minimal PyPI server for use with pip/easy_install</a></h2>
+<p><a href="https://pypi.org/project/pypiserver/" rel=nofollow><img alt="Latest Version in PyPI" src="https://warehouse-camo.ingress.cmh1.psfhosted.org/f1ef67ec7d38966268ad8b2b2e227c203e949280/68747470733a2f2f696d672e736869656c64732e696f2f707970692f762f707970697365727665722e737667"></a> <a href="https://travis-ci.org/pypiserver/pypiserver" rel=nofollow><img alt="Travis build status" src="https://warehouse-camo.ingress.cmh1.psfhosted.org/0b5c90adf4187dda6fbdecaaafad7a549c6a2bdb/68747470733a2f2f7472617669732d63692e6f72672f707970697365727665722f707970697365727665722e737667"></a> <a href="https://requires.io/github/pypiserver/pypiserver/requirements/" rel=nofollow><img alt="Dependencies up-to-date?" src="https://warehouse-camo.ingress.cmh1.psfhosted.org/30741c4fa451be834b4d95e74f501fac2f8604d6/68747470733a2f2f696d672e736869656c64732e696f2f72657175697265732f6769746875622f707970697365727665722f707970697365727665722e737667"></a> <a href="https://pypi.org/project/pypiserver/" rel=nofollow><img alt="Supported Python versions" src="https://warehouse-camo.ingress.cmh1.psfhosted.org/fb3813fce2af3a239b700656e64b418ecfa3d435/68747470733a2f2f696d672e736869656c64732e696f2f707970692f707976657273696f6e732f707970697365727665722e737667"></a> <a href="https://raw.githubusercontent.com/pypiserver/pypiserver/master/LICENSE.txt" rel=nofollow><img alt="Project License" src="https://warehouse-camo.ingress.cmh1.psfhosted.org/3241b17be1fd775ce8e78ecf6d4378404cd17e93/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4253442532427a6c69622532466c6962706e672d626c75652e737667"></a></p>
+<table>
+<col>
+<col>
+<tbody>
+<tr><th>Version:<td>1.4.2</td>
+</tr>
+<tr><th>Date:<td>2020-10-10</td>
+</tr>
+<tr><th>Source:<td><a href="https://github.com/pypiserver/pypiserver" rel=nofollow>https://github.com/pypiserver/pypiserver</a></td>
+</tr>
+<tr><th>PyPI:<td><a href="https://pypi.org/project/pypiserver/" rel=nofollow>https://pypi.org/project/pypiserver/</a></td>
+</tr>
+<tr><th>Travis:<td><a href="https://travis-ci.org/pypiserver/pypiserver" rel=nofollow>https://travis-ci.org/pypiserver/pypiserver</a></td>
+</tr>
+<tr><th>Maintainers:<td>Kostis Anagnostopoulos &lt;<a href=mailto:ankostis%40gmail.com>ankostis<span>@</span>gmail<span>.</span>com</a>&gt;,
+Matthew Planchard &lt;<a href=mailto:mplanchard%40gmail.com>mplanchard<span>@</span>gmail<span>.</span>com</a>&gt;</td>
+</tr>
+<tr><th>License:<td>zlib/libpng + MIT</td>
+</tr>
+<tr><th>Community:<td><a href="https://pypiserver.zulipchat.com" rel=nofollow>https://pypiserver.zulipchat.com</a></td>
+</tr>
+</tbody>
+</table>
+<p>Chat with us on <a href="https://pypiserver.zulipchat.com" rel=nofollow>Zulip</a>!</p>
+<p><tt>pypiserver</tt> is a minimal <a href="https://pypi.org" rel=nofollow>PyPI</a> compatible server for <tt>pip</tt> or <tt>easy_install</tt>.
+It is based on <a href="http://bottlepy.org" rel=nofollow>bottle</a> and serves packages from regular directories.
+Wheels, bdists, eggs and accompanying PGP-signatures can be uploaded
+either with <tt>pip</tt>, <tt>setuptools</tt>, <tt>twine</tt>, <tt><span class=pre>pypi-uploader</span></tt>, or simply copied
+with <tt>scp</tt>.</p>
+<div>
+<p>Note</p>
+<p>The official software powering <a href="https://pypi.org" rel=nofollow>PyPI</a> is <a href="https://github.com/pypa/warehouse/" rel=nofollow>Warehouse</a>. However, <a href="https://github.com/pypa/warehouse/" rel=nofollow>Warehouse</a>
+is fairly specialized to be <tt>pypi.org</tt>’s own software, and should not
+be used in other contexts. In particular, it does not officially support
+being used as a custom package index by users wishing to serve their own
+packages.</p>
+<p><tt>pypiserver</tt> implements the same interfaces as <a href="https://pypi.org" rel=nofollow>PyPI</a>, allowing
+standard Python packaging tooling such as <tt>pip</tt> and <tt>twine</tt> to
+interact with it as a package index just as they would with <a href="https://pypi.org" rel=nofollow>PyPI</a>, while
+making it much easier to get a running index server.</p>
+</div>
+<div id=table-of-contents>
+<p>Table of Contents</p>
+<ul>
+<li><a href=#pypiserver-minimal-pypi-server-for-use-with-pip-easy-install id=id7 rel=nofollow>pypiserver - minimal PyPI server for use with pip/easy_install</a><ul>
+<li><a href=#quickstart-installation-and-usage id=id8 rel=nofollow>Quickstart: Installation and Usage</a></li>
+<li><a href=#client-side-configurations id=id9 rel=nofollow>Client-Side Configurations</a><ul>
+<li><a href=#configuring-pip id=id10 rel=nofollow>Configuring <tt>pip</tt></a></li>
+<li><a href=#configuring-easy-install id=id11 rel=nofollow>Configuring <tt>easy_install</tt></a></li>
+</ul>
+</li>
+<li><a href=#uploading-packages-remotely id=id12 rel=nofollow>Uploading Packages Remotely</a><ul>
+<li><a href=#apache-like-authentication-htpasswd id=id13 rel=nofollow><em>Apache</em>-Like Authentication (<tt>htpasswd</tt>)</a></li>
+<li><a href=#upload-with-setuptools id=id14 rel=nofollow>Upload with <tt>setuptools</tt></a></li>
+<li><a href=#upload-with-twine id=id15 rel=nofollow>Upload with <tt>twine</tt></a></li>
+</ul>
+</li>
+<li><a href=#using-the-docker-image id=id16 rel=nofollow>Using the Docker Image</a></li>
+<li><a href=#alternative-installation-methods id=id17 rel=nofollow>Alternative Installation Methods</a><ul>
+<li><a href=#installing-the-very-latest-version id=id18 rel=nofollow>Installing the Very Latest Version</a></li>
+<li><a href=#installing-it-as-standalone-script id=id19 rel=nofollow>Installing It As Standalone Script</a></li>
+<li><a href=#running-on-heroku-dotcloud id=id20 rel=nofollow>Running on Heroku/Dotcloud</a></li>
+</ul>
+</li>
+<li><a href=#recipes id=id21 rel=nofollow>Recipes</a><ul>
+<li><a href=#managing-the-package-directory id=id22 rel=nofollow>Managing the Package Directory</a></li>
+<li><a href=#serving-thousands-of-packages id=id23 rel=nofollow>Serving Thousands of Packages</a></li>
+<li><a href=#managing-automated-startup id=id24 rel=nofollow>Managing Automated Startup</a><ul>
+<li><a href=#running-as-a-systemd-service id=id25 rel=nofollow>Running As a <tt>systemd</tt> Service</a></li>
+<li><a href=#launching-through-supervisor id=id26 rel=nofollow>Launching through <tt>supervisor</tt></a></li>
+<li><a href=#running-as-a-service-with-nssm-windows id=id27 rel=nofollow>Running As a service with <tt>NSSM</tt> (Windows)</a></li>
+</ul>
+</li>
+<li><a href=#using-a-different-wsgi-server id=id28 rel=nofollow>Using a Different WSGI Server</a><ul>
+<li><a href=#apache-mod-wsgi id=id29 rel=nofollow>Apache (<tt>mod_wsgi</tt>)</a></li>
+<li><a href=#gunicorn id=id30 rel=nofollow><tt>gunicorn</tt></a></li>
+<li><a href=#paste id=id31 rel=nofollow><tt>paste</tt></a></li>
+</ul>
+</li>
+<li><a href=#behind-a-reverse-proxy id=id32 rel=nofollow>Behind a Reverse Proxy</a><ul>
+<li><a href=#nginx id=id33 rel=nofollow>Nginx</a></li>
+<li><a href=#supporting-https id=id34 rel=nofollow>Supporting HTTPS</a></li>
+<li><a href=#traefik id=id35 rel=nofollow>Traefik</a></li>
+</ul>
+</li>
+<li><a href=#utilizing-the-api id=id36 rel=nofollow>Utilizing the API</a><ul>
+<li><a href=#using-ad-hoc-authentication-providers id=id37 rel=nofollow>Using Ad-Hoc Authentication Providers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href=#sources id=id38 rel=nofollow>Sources</a></li>
+<li><a href=#known-limitations id=id39 rel=nofollow>Known Limitations</a></li>
+<li><a href=#similar-projects id=id40 rel=nofollow>Similar Projects</a><ul>
+<li><a href=#unmaintained-or-archived id=id41 rel=nofollow>Unmaintained or archived</a></li>
+</ul>
+</li>
+<li><a href=#related-software id=id42 rel=nofollow>Related Software</a></li>
+<li><a href=#licensing id=id43 rel=nofollow>Licensing</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id=quickstart-installation-and-usage>
+<h3><a href=#table-of-contents rel=nofollow>Quickstart: Installation and Usage</a></h3>
+<p><tt>pypiserver</tt> &gt; 1.2.x works with Python 2.7 and 3.5+ or PyPy.
+Older Python versions may still work, but they are not tested.
+For legacy Python versions, use <tt><span class=pre>pypiserver-1.1.x</span></tt> series.</p>
+<div>
+<p>Tip</p>
+<p>The commands below work on a unix-like operating system with a posix shell.
+The <tt>'~'</tt> character expands to user’s home directory.</p>
+<p>If you’re using Windows, you’ll have to use their “Windows counterparts”.
+The same is true for the rest of this documentation.</p>
+</div>
+<ol>
+<li><p>Install <tt>pypiserver</tt> with this command:</p>
+<pre>pip install pypiserver                # Or: pypiserver[passlib,watchdog]
+mkdir ~/packages                      # Copy packages into this directory.
+</pre>
+<p>See also <a href=#alternative-installation-methods rel=nofollow>Alternative Installation methods</a>.</p>
+</li>
+<li><p>Copy some packages into your <tt>~/packages</tt> folder and then
+get your <tt>pypiserver</tt> up and running:</p>
+<pre>pypi-server -p 8080 ~/packages &amp;      # Will listen to all IPs.
+</pre>
+</li>
+<li><p>From the client computer, type this:</p>
+<pre># Download and install hosted packages.
+pip install --extra-index-url http://localhost:8080/simple/ ...
+
+# or
+pip install --extra-index-url http://localhost:8080 ...
+
+# Search hosted packages.
+pip search --index http://localhost:8080 ...
+
+# Note that pip search does not currently work with the /simple/ endpoint.
+</pre>
+<p>See also <a href=#client-side-configurations rel=nofollow>Client-side configurations</a> for avoiding tedious typing.</p>
+</li>
+<li><p>Enter <tt><span class=pre>pypi-server</span> <span class=pre>-h</span></tt> in the cmd-line to print a detailed usage message:</p>
+<pre>pypi-server [OPTIONS] [PACKAGES_DIRECTORY...]
+  start PyPI compatible package server serving packages from
+  PACKAGES_DIRECTORY. If PACKAGES_DIRECTORY is not given on the
+  command line, it uses the default ~/packages. pypiserver scans this
+  directory recursively for packages. It skips packages and
+  directories starting with a dot. Multiple package directories can be
+  specified.
+
+pypi-server understands the following options:
+
+  -p, --port PORT
+    Listen on port PORT (default: 8080).
+
+  -i, --interface INTERFACE
+    Listen on interface INTERFACE (default: 0.0.0.0, any interface).
+
+  -a, --authenticate (update|download|list), ...
+    Comma-separated list of (case-insensitive) actions to authenticate.
+    Requires to have set the password (-P option).
+    To password-protect package downloads (in addition to uploads) while
+    leaving listings public, use:
+      -P foo/htpasswd.txt -a update,download
+    To allow unauthorized access, use:
+      -P . -a .
+    Note that when uploads are not protected, the `register` command
+    is not necessary, but `~/.pypirc` still need username and password fields,
+    even if bogus.
+    By default, only 'update' is password-protected.
+
+  -P, --passwords PASSWORD_FILE
+    Use apache htpasswd file PASSWORD_FILE to set usernames &amp; passwords when
+    authenticating certain actions (see -a option).
+    To allow unauthorized access, use:
+      -P . -a .
+
+  --disable-fallback
+    Disable redirect to real PyPI index for packages not found in the
+    local index.
+
+  --fallback-url FALLBACK_URL
+    For packages not found in the local index, this URL will be used to
+    redirect to (default: https://pypi.org/simple/).
+
+  --server METHOD
+    Use METHOD to run the server. Valid values include paste,
+    cherrypy, twisted, gunicorn, gevent, wsgiref, auto. The
+    default is to use "auto" which chooses one of paste, cherrypy,
+    twisted or wsgiref.
+
+  -r, --root PACKAGES_DIRECTORY
+    [deprecated] Serve packages from PACKAGES_DIRECTORY.
+
+  -o, --overwrite
+    Allow overwriting existing package files.
+
+  --hash-algo ALGO
+    Any `hashlib` available algo used as fragments on package links.
+    Set one of (0, no, off, false) to disabled it (default: md5).
+
+  --welcome HTML_FILE
+    Uses the ASCII contents of HTML_FILE as welcome message response.
+
+  -v
+    Enable verbose logging; repeat for more verbosity.
+
+  --log-conf &lt;FILE&gt;
+    Read logging configuration from FILE.
+    By default, configuration is read from `log.conf` if found in server's dir.
+
+  --log-file &lt;FILE&gt;
+    Write logging info into this FILE.
+
+  --log-frmt &lt;FILE&gt;
+    The logging format-string (see `logging.LogRecord` class from standard python library).
+    [Default: %(asctime)s|%(name)s|%(levelname)s|%(thread)d|%(message)s]
+
+  --log-req-frmt FORMAT
+    A format-string selecting Http-Request properties to log; set to '%s' to see them all.
+    [Default: %(bottle.request)s]
+
+  --log-res-frmt FORMAT
+    A format-string selecting Http-Response properties to log; set to  '%s' to see them all.
+    [Default: %(status)s]
+
+  --log-err-frmt FORMAT
+    A format-string selecting Http-Error properties to log; set to  '%s' to see them all.
+    [Default: %(body)s: %(exception)s \n%(traceback)s]
+
+  --cache-control AGE
+    Add "Cache-Control: max-age=AGE, public" header to package downloads.
+    Pip 6+ needs this for caching.
+
+pypi-server -h, --help
+  Show this help message.
+
+pypi-server --version
+  Show pypi-server's version.
+
+pypi-server -U [OPTIONS] [PACKAGES_DIRECTORY...]
+  Update packages in PACKAGES_DIRECTORY. This command searches
+  pypi.org for updates and shows a pip command line which
+  updates the package.
+
+The following additional options can be specified with -U:
+
+  -x
+    Execute the pip commands instead of only showing them.
+
+  -d DOWNLOAD_DIRECTORY
+    Download package updates to this directory. The default is to use
+    the directory which contains the latest version of the package to
+    be updated.
+
+  -u
+    Allow updating to unstable version (alpha, beta, rc, dev versions).
+
+Visit https://github.com/pypiserver/pypiserver for more information.
+</pre>
+</li>
+</ol>
+</div>
+<div id=client-side-configurations>
+<h3><a href=#table-of-contents rel=nofollow>Client-Side Configurations</a></h3>
+<p>Always specifying the the pypi url on the command line is a bit
+cumbersome. Since <tt>pypiserver</tt> redirects <tt>pip/easy_install</tt> to the
+<tt>pypi.org</tt> index if it doesn’t have a requested package, it is a
+good idea to configure them to always use your local pypi index.</p>
+<div id=configuring-pip>
+<h4><a href=#table-of-contents rel=nofollow>Configuring <tt>pip</tt></a></h4>
+<p>For <tt>pip</tt> command this can be done by setting the environment variable
+<tt>PIP_EXTRA_INDEX_URL</tt> in your <tt><span class=pre>.bashr/.profile/.zshrc</span></tt>:</p>
+<pre>export PIP_EXTRA_INDEX_URL=http://localhost:8080/simple/
+</pre>
+<p>or by adding the following lines to <tt><span class=pre>~/.pip/pip.conf</span></tt>:</p>
+<pre>[global]
+extra-index-url = http://localhost:8080/simple/
+</pre>
+<div>
+<p>Note</p>
+<p>If you have installed <tt>pypiserver</tt> on a remote url without <em>https</em>
+you wil receive an “untrusted” warning from <em>pip</em>, urging you to append
+the <tt><span class=pre>--trusted-host</span></tt> option.  You can also include this option permanently
+in your configuration-files or environment variables.</p>
+</div>
+</div>
+<div id=configuring-easy-install>
+<h4><a href=#table-of-contents rel=nofollow>Configuring <tt>easy_install</tt></a></h4>
+<p>For <tt>easy_install</tt> command you may set the following configuration in
+<tt><span class=pre>~/.pydistutils.cfg</span></tt>:</p>
+<pre>[easy_install]
+index_url = http://localhost:8080/simple/
+</pre>
+</div>
+</div>
+<div id=uploading-packages-remotely>
+<h3><a href=#table-of-contents rel=nofollow>Uploading Packages Remotely</a></h3>
+<p>Instead of copying packages directly to the server’s folder (i.e. with <tt>scp</tt>),
+you may use python tools for the task, e.g. <tt>python setup.py upload</tt>.
+In that case, <tt>pypiserver</tt> is responsible for authenticating the upload-requests.</p>
+<div>
+<p>Note</p>
+<p>We strongly advise to password-protected your uploads!</p>
+<p>It is possible to disable authentication for uploads (e.g. in intranets).
+To avoid lazy security decisions, read help for <tt><span class=pre>-P</span></tt> and <tt><span class=pre>-a</span></tt> options.</p>
+</div>
+<div id=apache-like-authentication-htpasswd>
+<h4><a href=#table-of-contents rel=nofollow><em>Apache</em>-Like Authentication (<tt>htpasswd</tt>)</a></h4>
+<ol>
+<li><p>First make sure you have the <em>passlib</em> module installed (note that
+<tt><span class=pre>passlib&gt;=1.6</span></tt> is required), which is needed for parsing the Apache
+<em>htpasswd</em> file specified by the <tt><span class=pre>-P</span></tt>, <tt><span class=pre>--passwords</span></tt> option
+(see next steps):</p>
+<pre>pip install passlib
+</pre>
+</li>
+<li><p>Create the Apache <em>htpasswd</em> file with at least one user/password pair
+with this command (you’ll be prompted for a password):</p>
+<pre>htpasswd -sc htpasswd.txt &lt;some_username&gt;
+</pre>
+<div>
+<p>Tip</p>
+<p>Read this SO question for running <cite>htpasswd</cite> cmd
+under <em>Windows</em>:</p>
+<blockquote>
+<p><a href="http://serverfault.com/questions/152950/how-to-create-and-edit-htaccess-and-htpasswd-locally-on-my-computer-and-then-u" rel=nofollow>http://serverfault.com/questions/152950/how-to-create-and-edit-htaccess-and-htpasswd-locally-on-my-computer-and-then-u</a></p>
+</blockquote>
+<p>or if you have bogus passwords that you don’t care because they are for
+an internal service (which is still “bad”, from a security prespective…)
+you may use this public service:</p>
+<blockquote>
+<p><a href="http://www.htaccesstools.com/htpasswd-generator/" rel=nofollow>http://www.htaccesstools.com/htpasswd-generator/</a></p>
+</blockquote>
+</div>
+<div>
+<p>Tip</p>
+<p>When accessing pypiserver via the api, alternate authentication
+methods are available via the <tt>auther</tt> config flag. Any callable
+returning a boolean can be passed through to the pypiserver config in
+order to provide custom authentication. For example, to configure
+pypiserver to authenticate using the <a href="https://pypi.org/project/python-pam/" rel=nofollow>python-pam</a>:</p>
+<pre>import pam
+pypiserver.default_config(auther=pam.authenticate)
+</pre>
+<p>Please see <a href=#using-ad-hoc-authentication-providers rel=nofollow>Using Ad-hoc authentication providers</a> for more information.</p>
+</div>
+</li>
+<li><p>You  need to restart the server with the <tt><span class=pre>-P</span></tt> option only once
+(but user/password pairs can later be added or updated on the fly):</p>
+<pre>./pypi-server -p 8080 -P htpasswd.txt ~/packages &amp;
+</pre>
+</li>
+</ol>
+</div>
+<div id=upload-with-setuptools>
+<h4><a href=#table-of-contents rel=nofollow>Upload with <tt>setuptools</tt></a></h4>
+<ol>
+<li><p>On client-side, edit or create a <tt><span class=pre>~/.pypirc</span></tt> file with a similar content:</p>
+<pre>[distutils]
+index-servers =
+  pypi
+  local
+
+[pypi]
+username:&lt;your_pypi_username&gt;
+password:&lt;your_pypi_passwd&gt;
+
+[local]
+repository: http://localhost:8080
+username: &lt;some_username&gt;
+password: &lt;some_passwd&gt;
+</pre>
+</li>
+<li><p>Then from within the directory of the python-project you wish to upload,
+issue this command:</p>
+<pre>python setup.py sdist upload -r local
+</pre>
+</li>
+</ol>
+</div>
+<div id=upload-with-twine>
+<h4><a href=#table-of-contents rel=nofollow>Upload with <tt>twine</tt></a></h4>
+<p>To avoid storing you passwords on disk, in clear text, you may either:</p>
+<ul>
+<li><p>use the <tt>register</tt> <em>setuptools</em>’s command with the <tt><span class=pre>-r</span></tt> option,
+like that:</p>
+<pre>python setup.py sdist register -r local upload -r local
+</pre>
+</li>
+<li><p>use <a href="https://pypi.org/project/twine/" rel=nofollow>twine</a> library, which
+breaks the procedure in two steps.  In addition, it supports signing
+your files with PGP-Signatures and uploading the generated <cite>.asc</cite> files
+to <tt>pypiserver</tt>:</p>
+<pre>twine upload -r local --sign -identity user_name ./foo-1.zip
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id=using-the-docker-image>
+<h3><a href=#table-of-contents rel=nofollow>Using the Docker Image</a></h3>
+<p>Starting with version 1.2.5, official Docker images will be built for each
+push to master, each dev, alpha, or beta release, and each final release.
+The most recent full release will always be available under the tag <tt>latest</tt>,
+and the current master branch will always be available under the tag
+<tt>unstable</tt>.</p>
+<p>You can always check to see what tags are currently available at our
+<a href="https://hub.docker.com/r/pypiserver/pypiserver/tags/" rel=nofollow>Docker Repo</a>.</p>
+<p>To run the most recent release of <tt>pypiserver</tt> with Docker, simply:</p>
+<pre>docker run pypiserver/pypiserver:latest
+</pre>
+<p>This starts <tt>pypiserver</tt> serving packages from the <tt>/data/packages</tt>
+directory inside the container, listening on the container port 8080.</p>
+<p>The container takes all the same arguments as the normal <tt><span class=pre>pypi-server</span></tt>
+executable, with the exception of the internal container port (<tt><span class=pre>-p</span></tt>),
+which will always be 8080.</p>
+<p>Of course, just running a container isn’t that interesting. To map
+port 80 on the host to port 8080 on the container:</p>
+<pre>docker run -p 80:8080 pypiserver/pypiserver:latest
+</pre>
+<p>You can now access your <tt>pypiserver</tt> at <tt>localhost:80</tt> in a web browser.</p>
+<p>To serve packages from a directory on the host, e.g. <tt>~/packages</tt>:</p>
+<pre>docker run -p 80:8080 -v ~/packages:/data/packages pypiserver/pypiserver:latest
+</pre>
+<p>To authenticate against a local <tt>.htpasswd</tt> file:</p>
+<pre>docker run -p 80:8080 -v ~/.htpasswd:/data/.htpasswd pypiserver/pypiserver:latest -P .htpasswd packages
+</pre>
+<p>You can also specify <tt>pypiserver</tt> to run as a Docker service using a
+composefile. An example composefile is <a href=docker-compose.yml rel=nofollow>provided</a>.</p>
+</div>
+<div id=alternative-installation-methods>
+<h3><a href=#table-of-contents rel=nofollow>Alternative Installation Methods</a></h3>
+<p>When trying the methods below, first use the following command to check whether
+previous versions of <tt>pypiserver</tt> already exist, and (optionally) uninstall them:</p>
+<pre># VERSION-CHECK: Fails if not installed.
+pypi-server --version
+
+# UNINSTALL: Invoke again untill it fails.
+pip uninstall pypiserver
+</pre>
+<div id=installing-the-very-latest-version>
+<h4><a href=#table-of-contents rel=nofollow>Installing the Very Latest Version</a></h4>
+<p>In case the latest version in <em>pypi</em> is a pre-release, you have to use
+<em>pip</em>’s <cite>–pre</cite> option.  And to update an existing installation combine it
+with <cite>–ignore-installed</cite>:</p>
+<pre>pip install pypiserver --pre -I
+</pre>
+<p>You can even install the latest <tt>pypiserver</tt> directly from <em>github</em> with the
+following command, assuming you have <em>git</em> installed on your <tt>PATH</tt>:</p>
+<pre>pip install git+git://github.com/pypiserver/pypiserver.git
+</pre>
+</div>
+<div id=installing-it-as-standalone-script>
+<h4><a href=#table-of-contents rel=nofollow>Installing It As Standalone Script</a></h4>
+<p>The git repository contains a <tt><span class=pre>pypi-server-standalone.py</span></tt> script,
+which is a single python file that can be executed without any other
+dependencies.</p>
+<p>Run the following commands to download the script with <tt>wget</tt>:</p>
+<pre>wget https://raw.github.com/pypiserver/pypiserver/standalone/pypi-server-standalone.py
+chmod +x pypi-server-standalone.py
+</pre>
+<p>or with <tt>curl</tt>:</p>
+<pre>curl -O https://raw.github.com/pypiserver/pypiserver/standalone/pypi-server-standalone.py
+chmod +x pypi-server-standalone.py
+</pre>
+<p>You can then start-up the server with:</p>
+<pre>./pypi-server-standalone.py
+</pre>
+<p>Feel free to rename the script and move it into your <tt>$PATH</tt>.</p>
+</div>
+<div id=running-on-heroku-dotcloud>
+<h4><a href=#table-of-contents rel=nofollow>Running on Heroku/Dotcloud</a></h4>
+<p><a href="https://github.com/dexterous/pypiserver-on-the-cloud" rel=nofollow>https://github.com/dexterous/pypiserver-on-the-cloud</a> contains
+instructions on how to run <tt>pypiserver</tt> on one of the supported cloud
+service providers.</p>
+</div>
+</div>
+<div id=recipes>
+<h3><a href=#table-of-contents rel=nofollow>Recipes</a></h3>
+<div id=managing-the-package-directory>
+<h4><a href=#table-of-contents rel=nofollow>Managing the Package Directory</a></h4>
+<p>The <tt><span class=pre>pypi-server</span></tt> command has the <tt><span class=pre>-U</span></tt> option that searches for updates of
+available packages. It scans the package directory for available
+packages and searches on pypi.org for updates. Without further
+options <tt><span class=pre>pypi-server</span> <span class=pre>-U</span></tt> will just print a list of commands which must
+be run in order to get the latest version of each package. Output
+looks like:</p>
+<pre>$ ./pypi-server -U
+checking 106 packages for newer version
+
+.........u.e...........e..u.............
+.....e..............................e...
+..........................
+
+no releases found on pypi for PyXML, Pymacs, mercurial, setuptools
+
+# update raven from 1.4.3 to 1.4.4
+pip -q install --no-deps  --extra-index-url https://pypi.org/simple/ -d /home/ralf/packages/mirror raven==1.4.4
+
+# update greenlet from 0.3.3 to 0.3.4
+pip -q install --no-deps  --extra-index-url https://pypi.org/simple/ -d /home/ralf/packages/mirror greenlet==0.3.4
+</pre>
+<p>It first prints for each package a single character after checking the
+available versions on pypi. A dot(<cite>.</cite>) means the package is up-to-date, <tt>'u'</tt>
+means the package can be updated and <tt>'e'</tt> means the list of releases on
+pypi is empty. After that it shows a <em>pip</em> command line which can be used
+to update a one package. Either copy and paste that or run
+<tt><span class=pre>pypi-server</span> <span class=pre>-Ux</span></tt> in order to really execute those commands. You need
+to have <em>pip</em> installed for that to work however.</p>
+<p>Specifying an additional <tt><span class=pre>-u</span></tt> option will also allow alpha, beta and
+release candidates to be downloaded. Without this option these
+releases won’t be considered.</p>
+</div>
+<div id=serving-thousands-of-packages>
+<h4><a href=#table-of-contents rel=nofollow>Serving Thousands of Packages</a></h4>
+<p>By default, <tt>pypiserver</tt> scans the entire packages directory each time an
+incoming HTTP request occurs. This isn’t a problem for a small number of
+packages, but causes noticeable slow-downs when serving thousands of packages.</p>
+<p>If you run into this problem, significant speedups can be gained by enabling
+pypiserver’s directory caching functionality. The only requirement is to
+install the <tt>watchdog</tt> package, or it can be installed during <tt>pypiserver</tt>
+installation, by specifying the <tt>cache</tt> extras option:</p>
+<pre>pip install pypiserver[cache]
+</pre>
+<p>Additional speedups can be obtained by using your webserver’s builtin
+caching functionality. For example, if you are using <cite>nginx</cite> as a
+reverse-proxy as described below in <a href=#behind-a-reverse-proxy rel=nofollow>Behind a reverse proxy</a>, you can
+easily enable caching. For example, to allow nginx to cache up to
+10 gigabytes of data for up to 1 hour:</p>
+<pre>proxy_cache_path /data/nginx/cache
+                 levels=1:2
+                 keys_zone=pypiserver_cache:10m
+                 max_size=10g
+                 inactive=60m
+                 use_temp_path=off;
+
+server {
+    # ...
+    location / {
+        proxy_cache pypiserver_cache;
+        proxy_pass http://localhost:8080;
+    }
+}
+</pre>
+<p>Using webserver caching is especially helpful if you have high request
+volume. Using <cite>nginx</cite> caching, a real-world pypiserver installation was
+able to easily support over 1000 package downloads/min at peak load.</p>
+</div>
+<div id=managing-automated-startup>
+<h4><a href=#table-of-contents rel=nofollow>Managing Automated Startup</a></h4>
+<p>There are a variety of options for handling the automated starting of
+pypiserver upon system startup. Two of the most common are <em>systemd</em> and
+<em>supervisor</em> for linux systems. For windows creating services with scripts isn’t
+an easy task without a third party tool such as <em>NSSM</em>.</p>
+<div id=running-as-a-systemd-service>
+<h5><a href=#table-of-contents rel=nofollow>Running As a <tt>systemd</tt> Service</a></h5>
+<p><tt>systemd</tt> is installed by default on most modern Linux systems and as such,
+it is an excellent option for managing the pypiserver process. An example
+config file for <tt>systemd</tt> can be seen below:</p>
+<pre>[Unit]
+Description=A minimal PyPI server for use with pip/easy_install.
+After=network.target
+
+[Service]
+Type=simple
+# systemd requires absolute path here too.
+PIDFile=/var/run/pypiserver.pid
+User=www-data
+Group=www-data
+
+ExecStart=/usr/local/bin/pypi-server -p 8080 -a update,download --log-file /var/log/pypiserver.log -P /etc/nginx/.htpasswd /var/www/pypi
+ExecStop=/bin/kill -TERM $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+
+WorkingDirectory=/var/www/pypi
+
+TimeoutStartSec=3
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+<p>Adjusting the paths and adding this file as <tt>pypiserver.service</tt> into your
+<tt>systemd/system</tt> directory will allow management of the pypiserver process with
+<tt>systemctl</tt>, e.g. <tt>systemctl start pypiserver</tt>.</p>
+<p>More useful information about <em>systemd</em> can be found at
+<a href="https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units" rel=nofollow>https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units</a></p>
+</div>
+<div id=launching-through-supervisor>
+<h5><a href=#table-of-contents rel=nofollow>Launching through <tt>supervisor</tt></a></h5>
+<p><a href="http://supervisord.org/" rel=nofollow>supervisor</a> has the benefit of being a pure python
+package and as such, it provides excellent cross-platform support for process
+management. An example configuration file for <tt>supervisor</tt> is given below:</p>
+<pre>[program:pypi]
+command=/home/pypi/pypi-venv/bin/pypi-server -p 7001 -P /home/pypi/.htpasswd /home/pypi/packages
+directory=/home/pypi
+user=pypi
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/pypiserver.err.log
+stdout_logfile=/var/log/pypiserver.out.log
+</pre>
+<p>From there, the process can be managed via <tt>supervisord</tt> using <tt>supervisorctl</tt>.</p>
+</div>
+<div id=running-as-a-service-with-nssm-windows>
+<h5><a href=#table-of-contents rel=nofollow>Running As a service with <tt>NSSM</tt> (Windows)</a></h5>
+<p>Download NSSM from <a href="https://nssm.cc" rel=nofollow>https://nssm.cc</a> unzip to a desired location such as Program Files. Decide whether you are going
+to use win32 or win64, and add that exe to environment PATH.</p>
+<p>Create a start_pypiserver.bat:</p>
+<pre>pypi-server -p 8080 C:\Path\To\Packages &amp;
+</pre>
+<p>Test the batch file by running it first before creating the service. Make sure you can access
+the server remotely, and install packages. If you can, proceed, if not troubleshoot until you can.
+This will ensure you know the server works, before adding NSSM into the mix.</p>
+<p>From the command prompt:</p>
+<pre>nssm install pypiserver
+</pre>
+<p>This command will launch a NSSM gui application:</p>
+<pre>Path: C:\Path\To\start_pypiserver.bat
+Startup directory: Auto generates when selecting path
+Service name: pypiserver
+</pre>
+<p>There are more tabs, but that is the basic setup. If the service needs to be running with a certain
+login credentials, make sure you enter those credentials in the logon tab.</p>
+<p>Start the service:</p>
+<pre>nssm start pypiserver
+</pre>
+<p>Other useful commands:</p>
+<pre>nssm --help
+nssm stop &lt;servicename&gt;
+nssm restart &lt;servicename&gt;
+nssm status &lt;servicename&gt;
+</pre>
+<p>For detailed information please visit <a href="https://nssm.cc" rel=nofollow>https://nssm.cc</a></p>
+</div>
+</div>
+<div id=using-a-different-wsgi-server>
+<h4><a href=#table-of-contents rel=nofollow>Using a Different WSGI Server</a></h4>
+<ul>
+<li><p>The <tt>bottle</tt> web-server which supports many WSGI-servers, among others,
+<tt>paste</tt>, <tt>cherrypy</tt>, <tt>twisted</tt> and <tt>wsgiref</tt> (part of Python); you select
+them using the <tt><span class=pre>--server</span></tt> flag.</p>
+</li>
+<li><p>You may view all supported WSGI servers using the following interactive code:</p>
+<pre>&gt;&gt;&gt; from pypiserver import bottle
+&gt;&gt;&gt; list(bottle.server_names.keys())
+['cgi', 'gunicorn', 'cherrypy', 'eventlet', 'tornado', 'geventSocketIO',
+'rocket', 'diesel', 'twisted', 'wsgiref', 'fapws3', 'bjoern', 'gevent',
+'meinheld', 'auto', 'aiohttp', 'flup', 'gae', 'paste', 'waitress']
+</pre>
+</li>
+<li><p>If none of the above servers matches your needs, invoke just the
+<tt>pypiserver:app()</tt> method which returns the internal WSGI-app WITHOUT
+starting-up a server - you may then send it to any WSGI server you like.
+Read also the <a href=#utilizing-the-api rel=nofollow>Utilizing the API</a> section.</p>
+</li>
+<li><p>Some examples are given below - you may find more details in <a href="http://bottlepy.org/docs/dev/deployment.html#switching-the-server-backend" rel=nofollow>bottle
+site</a>.</p>
+</li>
+</ul>
+<div id=apache-mod-wsgi>
+<h5><a href=#table-of-contents rel=nofollow>Apache (<tt>mod_wsgi</tt>)</a></h5>
+<p>To use your <em>Apache2</em> with <tt>pypiserver</tt>, prefer to utilize <tt>mod_wsgi</tt> as
+explained in <a href="http://bottlepy.org/docs/dev/deployment.html#apache-mod-wsgi" rel=nofollow>bottle’s documentation</a>.</p>
+<div>
+<p>Note</p>
+<p>If you choose instead to go with <tt>mod_proxy</tt>, mind that you may bump into problems
+with the prefix-path (see <a href="https://github.com/pypiserver/pypiserver/issues/155" rel=nofollow>#155</a>).</p>
+</div>
+<ol>
+<li><p>Adapt and place the following <em>Apache</em> configuration either into top-level scope,
+or inside some <tt>&lt;VirtualHost&gt;</tt> (contributed by Thomas Waldmann):</p>
+<pre>WSGIScriptAlias   /     /yoursite/wsgi/pypiserver-wsgi.py
+WSGIDaemonProcess       pypisrv user=pypisrv group=pypisrv umask=0007 \
+                        processes=1 threads=5 maximum-requests=500 \
+                        display-name=wsgi-pypisrv inactivity-timeout=300
+WSGIProcessGroup        pypisrv
+WSGIPassAuthorization On    # Required for authentication (https://github.com/pypiserver/pypiserver/issues/288)
+
+&lt;Directory /yoursite/wsgi &gt;
+    Require all granted
+&lt;/Directory&gt;
+</pre>
+<p>or if using older <tt>Apache &lt; 2.4</tt>, substitute the last part with this:</p>
+<pre>&lt;Directory /yoursite/wsgi &gt;
+    Order deny,allow
+    Allow from all
+&lt;/Directory&gt;
+</pre>
+</li>
+<li><p>Then create the <tt>/yoursite/cfg/pypiserver.wsgi</tt> file and make sure that
+the <tt>user</tt> and <tt>group</tt> of the <tt>WSGIDaemonProcess</tt> directive
+(<tt>pypisrv:pypisrv</tt> in the example) have the read permission on it:</p>
+<pre>import pypiserver
+
+conf = pypiserver.default_config(
+    root =          "/yoursite/packages",
+    password_file = "/yoursite/htpasswd", )
+application = pypiserver.app(**conf)
+</pre>
+<div>
+<p>Tip</p>
+<p>If you have installed <tt>pypiserver</tt> in a virtualenv, follow <tt>mod_wsgi</tt>’s
+<a href="http://modwsgi.readthedocs.io/en/develop/user-guides/virtual-environments.html" rel=nofollow>instructions</a>
+and prepend the python code above with the following:</p>
+<pre>import site
+
+site.addsitedir('/yoursite/venv/lib/pythonX.X/site-packages')
+</pre>
+</div>
+</li>
+</ol>
+<div>
+<p>Note</p>
+<p>For security reasons, notice that the <tt>Directory</tt> directive grants access
+to a directory holding the <tt>wsgi</tt> start-up script, alone; nothing else.</p>
+</div>
+<div>
+<p>Note</p>
+<p>To enable HTTPS support on Apache, configure the directive that contains the
+WSGI configuration to use SSL.</p>
+</div>
+</div>
+<div id=gunicorn>
+<h5><a href=#table-of-contents rel=nofollow><tt>gunicorn</tt></a></h5>
+<p>The following command uses <tt>gunicorn</tt> to start <tt>pypiserver</tt>:</p>
+<pre>gunicorn -w4 'pypiserver:app(root="/home/ralf/packages")'
+</pre>
+<p>or when using multiple roots:</p>
+<pre>gunicorn -w4 'pypiserver:app(root=["/home/ralf/packages", "/home/ralf/experimental"])'
+</pre>
+</div>
+<div id=paste>
+<h5><a href=#table-of-contents rel=nofollow><tt>paste</tt></a></h5>
+<p><a href="http://pythonpaste.org/" rel=nofollow>paste</a> allows to run multiple WSGI applications
+under different URL paths. Therefore it is possible to serve different set
+of packages on different paths.</p>
+<p>The following example <tt>paste.ini</tt> could be used to serve stable and
+unstable packages on different paths:</p>
+<pre>[composite:main]
+use = egg:Paste#urlmap
+/unstable/ = unstable
+/ = stable
+
+[app:stable]
+use = egg:pypiserver#main
+root = ~/stable-packages
+
+[app:unstable]
+use = egg:pypiserver#main
+root = ~/stable-packages
+   ~/unstable-packages
+
+[server:main]
+use = egg:gunicorn#main
+host = 0.0.0.0
+port = 9000
+workers = 5
+accesslog = -
+</pre>
+<div>
+<p>Note</p>
+<p>You need to install some more dependencies for this to work, like:</p>
+<pre>pip install paste pastedeploy gunicorn pypiserver
+</pre>
+<p>The server can then start with:</p>
+<pre>gunicorn_paster paste.ini
+</pre>
+</div>
+</div>
+</div>
+<div id=behind-a-reverse-proxy>
+<h4><a href=#table-of-contents rel=nofollow>Behind a Reverse Proxy</a></h4>
+<p>You can run <tt>pypiserver</tt> behind a reverse proxy as well.</p>
+<div id=nginx>
+<h5><a href=#table-of-contents rel=nofollow>Nginx</a></h5>
+<p>Extend your nginx configuration:</p>
+<pre>upstream pypi {
+  server              pypiserver.example.com:12345 fail_timeout=0;
+}
+
+server {
+  server_name         myproxy.example.com;
+
+  location / {
+    proxy_set_header  Host $host:$server_port;
+    proxy_set_header  X-Forwarded-Proto $scheme;
+    proxy_set_header  X-Real-IP $remote_addr;
+    proxy_pass        http://pypi;
+  }
+}
+</pre>
+<p>As of pypiserver 1.3, you may also use the <cite>X-Forwarded-Host</cite> header in your
+reverse proxy config to enable changing the base URL. For example if you
+want to host pypiserver under a particular path on your server:</p>
+<pre>upstream pypi {
+  server              locahost:8000;
+}
+
+server {
+  location /pypi/ {
+      proxy_set_header  X-Forwarded-Host $host:$server_port/pypi;
+      proxy_set_header  X-Forwarded-Proto $scheme;
+      proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header  X-Real-IP $remote_addr;
+      proxy_pass        http://pypi;
+  }
+}
+</pre>
+</div>
+<div id=supporting-https>
+<h5><a href=#table-of-contents rel=nofollow>Supporting HTTPS</a></h5>
+<p>Using a reverse proxy is the preferred way of getting pypiserver behind
+HTTPS. For example, to put pypiserver behind HTTPS on port 443, with
+automatic HTTP redirection, using <cite>nginx</cite>:</p>
+<pre>upstream pypi {
+  server               localhost:8000;
+}
+
+server {
+  listen              80 default_server;
+  server_name         _;
+  return              301 https://$host$request_uri;
+}
+
+server {
+  listen              443 ssl;
+  server_name         pypiserver.example.com;
+
+  ssl_certificate     /etc/star.example.com.crt;
+  ssl_certificate_key /etc/star.example.com.key;
+  ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+  ssl_ciphers         HIGH:!aNULL:!MD5;
+
+  location / {
+    proxy_set_header  Host $host:$server_port;
+    proxy_set_header  X-Forwarded-Proto $scheme;
+    proxy_set_header  X-Real-IP $remote_addr;
+    proxy_pass        http://pypi;
+  }
+}
+</pre>
+<p>Please see <a href="http://nginx.org/en/docs/http/configuring_https_servers.html" rel=nofollow>nginx’s HTTPS docs for more details</a>.</p>
+<p>Getting and keeping your certificates up-to-date can be simplified using,
+for example, using <a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04" rel=nofollow>certbot and letsencrypt</a>.</p>
+</div>
+<div id=traefik>
+<h5><a href=#table-of-contents rel=nofollow>Traefik</a></h5>
+<p>It is also possible to use <a href="https://docs.traefik.io/" rel=nofollow>Traefik</a> to put pypiserver behind HTTPS on port 443, with
+automatic HTTP redirection using Docker Compose. Please see the provided <a href=docker-compose.yml rel=nofollow>docker-compose.yml</a> example for more information.</p>
+</div>
+</div>
+<div id=utilizing-the-api>
+<h4><a href=#table-of-contents rel=nofollow>Utilizing the API</a></h4>
+<p>In order to enable ad-hoc authentication-providers or to use WSGI-servers
+not supported by <em>bottle</em> out-of-the-box, you needed to launch <tt>pypiserver</tt>
+via its API.</p>
+<ul>
+<li>The main entry-point for configuring <tt>pypiserver</tt> is the <a href="https://github.com/pypiserver/pypiserver/blob/master/pypiserver/__init__.py#L116" rel=nofollow>pypiserver:app()</a>
+function.  This function returns the internal WSGI-app that you my then
+send to any WSGI-server you like.</li>
+<li>To get all <tt>pypiserver:app()</tt> keywords and their explanations, read the
+function <a href="https://github.com/pypiserver/pypiserver/blob/master/pypiserver/__init__.py#L35" rel=nofollow>pypiserver:default_config()</a>.</li>
+<li>Finally, to fire-up a WSGI-server with the configured app, invoke
+the <tt>bottle:run(app, host, port, server)</tt> function.
+Note that <tt>pypiserver</tt> ships with it is own copy of <em>bottle</em>; to use it,
+import it like that: <tt>from pypiserver import bottle</tt></li>
+</ul>
+<div id=using-ad-hoc-authentication-providers>
+<h5><a href=#table-of-contents rel=nofollow>Using Ad-Hoc Authentication Providers</a></h5>
+<p>The <tt>auther</tt> keyword of <tt>pypiserver:app()</tt> function maybe set only using
+the API. This can be any callable that returns a boolean when passed
+the <em>username</em> and the <em>password</em> for a given request.</p>
+<p>For example, to authenticate users based on the <tt>/etc/passwd</tt> file under Unix,
+you may delegate such decisions to the <a href="https://pypi.org/project/python-pam/" rel=nofollow>python-pam</a> library by following
+these steps:</p>
+<ol>
+<li><p>Ensure <tt><span class=pre>python-pam</span></tt> module is installed:</p>
+<pre>pip install python-pam
+</pre>
+</li>
+<li><p>Create a python-script along these lines:</p>
+<pre>$ cat &gt; pypiserver-start.py
+import pypiserver
+from pypiserver import bottle
+import pam
+app = pypiserver.app(root='./packages', auther=pam.authenticate)
+bottle.run(app=app, host='0.0.0.0', port=80, server='auto')
+
+[Ctrl+ D]
+</pre>
+</li>
+<li><p>Invoke the python-script to start-up <tt>pypiserver</tt>:</p>
+<pre>$ python pypiserver-start.py
+</pre>
+</li>
+</ol>
+<div>
+<p>Note</p>
+<p>The <a href="https://pypi.org/project/python-pam/" rel=nofollow>python-pam</a> module, requires <em>read</em> access to <tt>/etc/shadow</tt> file;
+you may add the user under which <tt>pypiserver</tt> runs into the <em>shadow</em>
+group, with a command like this: <tt>sudo usermod <span class=pre>-a</span> <span class=pre>-G</span> shadow <span class=pre>pypy-user</span></tt>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id=sources>
+<h3><a href=#table-of-contents rel=nofollow>Sources</a></h3>
+<p>To create a copy of the repository, use:</p>
+<pre>git clone https://github.com/pypiserver/pypiserver.git
+cd pypiserver
+</pre>
+<p>To receive any later changes, in the above folder use:</p>
+<pre>git pull
+</pre>
+</div>
+<div id=known-limitations>
+<h3><a href=#table-of-contents rel=nofollow>Known Limitations</a></h3>
+<p><tt>pypiserver</tt> does not implement the full API as seen on <a href="https://pypi.org" rel=nofollow>PyPI</a>. It
+implements just enough to make <tt>easy_install</tt>, <tt>pip install</tt>, and
+<tt>search</tt> work.</p>
+<p>The following limitations are known:</p>
+<ul>
+<li>Command <tt>pypi <span class=pre>-U</span></tt> that compares uploaded packages with <em>pypi</em> to see if
+they are outdated, does not respect a http-proxy environment variable
+(see <a href="https://github.com/pypiserver/pypiserver/issues/19" rel=nofollow>#19</a>).</li>
+<li>It accepts documentation uploads but does not save them to
+disk (see <a href="https://github.com/pypiserver/pypiserver/issues/47" rel=nofollow>#47</a> for a
+discussion)</li>
+<li>It does not handle misspelled packages as <em>pypi-repo</em> does,
+therefore it is suggested to use it with <tt><span class=pre>--extra-index-url</span></tt> instead
+of <tt><span class=pre>--index-url</span></tt> (see <a href="https://github.com/pypiserver/pypiserver/issues/38" rel=nofollow>#38</a>).</li>
+</ul>
+<p>Please use Github’s <a href="https://github.com/pypiserver/pypiserver/issues" rel=nofollow>bugtracker</a>
+for other bugs you find.</p>
+</div>
+<div id=similar-projects>
+<h3><a href=#table-of-contents rel=nofollow>Similar Projects</a></h3>
+<p>There are lots of other projects, which allow you to run your own
+PyPI server. If <tt>pypiserver</tt> doesn’t work for you, the following are
+among the most popular alternatives:</p>
+<ul>
+<li><a href="https://pypi.org/project/devpi/" rel=nofollow>devpi-server</a>:
+a reliable fast pypi.org caching server, part of
+the comprehensive <a href="https://pypi.org/project/devpi/" rel=nofollow>github-style pypi index server and packaging meta tool</a>.
+(version: 2.1.4, access date: 8/3/2015)</li>
+<li>Check this SO question: <a href="http://stackoverflow.com/questions/1235331/how-to-roll-my-own-pypi" rel=nofollow>How to roll my own pypi</a></li>
+</ul>
+<div id=unmaintained-or-archived>
+<h4><a href=#table-of-contents rel=nofollow>Unmaintained or archived</a></h4>
+<p>These projects were once alternatives to pypiserver but are now either unmaintained or archived.</p>
+<ul>
+<li><a href="https://github.com/wolever/pip2pi" rel=nofollow>pip2pi</a>
+a simple cmd-line tool that builds a PyPI-compatible local folder from pip requirements</li>
+<li><a href="http://flask-pypi-proxy.readthedocs.org/" rel=nofollow>flask-pypi-proxy</a>
+A proxy for PyPI that also enables also uploading custom packages.</li>
+</ul>
+</div>
+</div>
+<div id=related-software>
+<h3><a href=#table-of-contents rel=nofollow>Related Software</a></h3>
+<p>Though not direct alternatives for <tt>pypiserver</tt>’s use as an index
+server, the following is a list of related software projects that you
+may want to familiarize with:</p>
+<ul>
+<li><a href="https://pypi.org/project/pypi-uploader/" rel=nofollow>pypi-uploader</a>:
+A command-line utility to upload packages to your <tt>pypiserver</tt> from pypi without
+having to store them locally first.</li>
+<li><a href="https://pypi.org/project/twine/" rel=nofollow>twine</a>:
+A command-line utility for interacting with PyPI or <tt>pypiserver</tt>.</li>
+<li><a href="https://github.com/pypa/warehouse/" rel=nofollow>warehouse</a>:
+the software that powers <a href="https://pypi.org" rel=nofollow>PyPI</a> itself. It is not generally intended to
+be run by end-users.</li>
+</ul>
+</div>
+<div id=licensing>
+<h3><a href=#table-of-contents rel=nofollow>Licensing</a></h3>
+<p><tt>pypiserver</tt> contains a copy of <a href="http://bottlepy.org" rel=nofollow>bottle</a> which is available under the
+MIT license, and the remaining part is distributed under the zlib/libpng license.
+See the <tt>LICENSE.txt</tt> file.</p>
+</div>
+</div>
+
+          </div>
+          
+        </div>
+
+        
+        <div id="data" data-target="project-tabs.content" class="vertical-tabs__content" role="tabpanel" aria-labelledby="mobile-data-tab" tabindex="-1">
+          <h2 class="page-title">Project details</h2>
+          
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Project links</h3>
+  <ul class="vertical-tabs__list">
+    
+    
+    <li>
+      <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed" href="https://github.com/pypiserver/pypiserver" rel="nofollow">
+        
+
+
+  
+
+
+<i class="fas fa-home" aria-hidden="true"></i>Homepage
+      </a>
+    </li>
+    
+    
+  </ul>
+</div>
+
+
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Statistics</h3>
+  
+  <div class="github-repo-info hidden" data-url="https://api.github.com/repos/pypiserver/pypiserver">
+    GitHub statistics:
+    <ul class="vertical-tabs__list">
+      <li>
+        <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed github-repo-info__item"
+           data-key="html_url" data-attr="href" data-supplement="/stargazers" rel="noopener">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <strong>Stars:</strong>
+          <span class="github-repo-info__item" data-key="stargazers_count"></span>
+        </a>
+      </li>
+      <li>
+        <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed github-repo-info__item"
+           data-key="html_url" data-attr="href" data-supplement="/network/members" rel="noopener">
+          <i class="fa fa-code-branch" aria-hidden="true"></i>
+          <strong>Forks:</strong>
+          <span class="github-repo-info__item" data-key="forks_count"></span>
+        </a>
+      </li>
+      <li>
+        <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed github-repo-info__item"
+           data-key="html_url" data-attr="href" data-supplement="/issues" rel="noopener">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          <strong>Open issues/PRs:</strong>
+          <span class="github-repo-info__item" data-key="open_issues_count"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  <p>
+    View statistics for this project via <a href="https://libraries.io/pypi/pypiserver" title="External link" target="_blank" rel="noopener">Libraries.io</a>, or by using <a href="https://packaging.python.org/guides/analyzing-pypi-package-downloads/" target="_blank" rel="noopener">our public dataset on Google BigQuery</a>
+  </p>
+</div>
+
+
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Meta</h3>
+  
+  <p><strong>License:</strong> BSD License, zlib/libpng License</p>
+  
+  
+  
+    <p><strong>Maintainer:</strong> <a href="mailto:ankostis@gmail.com">Kostis Anagnostopoulos &lt;ankostis@gmail.com&gt;Matthew Planchard &lt;mplanchard@gmail.com&gt;</a></p>
+  
+  
+  
+  <p>
+    <strong>Requires:</strong> Python &gt;=2.7,  !=3.0.*,  !=3.1.*,  !=3.2.*,  !=3.3.*
+  </p>
+  
+</div>
+
+
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Maintainers</h3>
+  
+    
+    <span class="sidebar-section__maintainer">
+      <a href="/user/ankostis/" aria-label="ankostis">
+        <span class="sidebar-section__user-gravatar">
+          <img src="https://warehouse-camo.ingress.cmh1.psfhosted.org/b2e8b9f791a10ea90a0689dd39004a7acfd26047/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f38663964336232373261373430373065396261346163646337623937353362313f73697a653d3530" height="50" width="50" alt="Avatar for ankostis from gravatar.com" title="Avatar for ankostis from gravatar.com">
+        </span>
+        <span class="sidebar-section__user-gravatar-text">
+          ankostis
+        </span>
+      </a>
+    </span>
+  
+    
+    <span class="sidebar-section__maintainer">
+      <a href="/user/deemetree/" aria-label="deemetree">
+        <span class="sidebar-section__user-gravatar">
+          <img src="https://warehouse-camo.ingress.cmh1.psfhosted.org/caacc08c80aecb6e43b83530c2b1d486b6b0e822/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f34656331626330623036663139353665313838346161363066613430373163393f73697a653d3530" height="50" width="50" alt="Avatar for deemetree from gravatar.com" title="Avatar for deemetree from gravatar.com">
+        </span>
+        <span class="sidebar-section__user-gravatar-text">
+          deemetree
+        </span>
+      </a>
+    </span>
+  
+    
+    <span class="sidebar-section__maintainer">
+      <a href="/user/mplanchard/" aria-label="mplanchard">
+        <span class="sidebar-section__user-gravatar">
+          <img src="https://warehouse-camo.ingress.cmh1.psfhosted.org/c3cf8136e42657b43624f0a947c697cb378eb346/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f33666530356631663263613538386565393938346361666430383635623439303f73697a653d3530" height="50" width="50" alt="Avatar for mplanchard from gravatar.com" title="Avatar for mplanchard from gravatar.com">
+        </span>
+        <span class="sidebar-section__user-gravatar-text">
+          mplanchard
+        </span>
+      </a>
+    </span>
+  
+    
+    <span class="sidebar-section__maintainer">
+      <a href="/user/ror6ax/" aria-label="ror6ax">
+        <span class="sidebar-section__user-gravatar">
+          <img src="https://warehouse-camo.ingress.cmh1.psfhosted.org/ea681a1b4f0322b48ac4e83e485fc18083dfcde5/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f38303338643836353865393737383962396631646335353634653662636633353f73697a653d3530" height="50" width="50" alt="Avatar for ror6ax from gravatar.com" title="Avatar for ror6ax from gravatar.com">
+        </span>
+        <span class="sidebar-section__user-gravatar-text">
+          ror6ax
+        </span>
+      </a>
+    </span>
+  
+    
+    <span class="sidebar-section__maintainer">
+      <a href="/user/schmir/" aria-label="schmir">
+        <span class="sidebar-section__user-gravatar">
+          <img src="https://warehouse-camo.ingress.cmh1.psfhosted.org/e50ae10f7d290038600b9bda5f9adbb6d5a18db8/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f31353438653133303838653066386535356332356634633534336164393134303f73697a653d3530" height="50" width="50" alt="Avatar for schmir from gravatar.com" title="Avatar for schmir from gravatar.com">
+        </span>
+        <span class="sidebar-section__user-gravatar-text">
+          schmir
+        </span>
+      </a>
+    </span>
+  
+</div>
+
+
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Classifiers</h3>
+  <ul class="sidebar-section__classifiers">
+    
+    <li>
+      <strong>Development Status</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Development+Status+%3A%3A+5+-+Production%2FStable">
+            5 - Production/Stable
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li>
+      <strong>Environment</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Environment+%3A%3A+Web+Environment">
+            Web Environment
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li>
+      <strong>Intended Audience</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Intended+Audience+%3A%3A+Developers">
+            Developers
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Intended+Audience+%3A%3A+System+Administrators">
+            System Administrators
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li>
+      <strong>License</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=License+%3A%3A+OSI+Approved+%3A%3A+BSD+License">
+            OSI Approved :: BSD License
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=License+%3A%3A+OSI+Approved+%3A%3A+zlib%2Flibpng+License">
+            OSI Approved :: zlib/libpng License
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li>
+      <strong>Operating System</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Operating+System+%3A%3A+MacOS+%3A%3A+MacOS+X">
+            MacOS :: MacOS X
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Operating+System+%3A%3A+Microsoft+%3A%3A+Windows">
+            Microsoft :: Windows
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Operating+System+%3A%3A+OS+Independent">
+            OS Independent
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Operating+System+%3A%3A+POSIX">
+            POSIX
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li>
+      <strong>Programming Language</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+2">
+            Python :: 2
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+2.7">
+            Python :: 2.7
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3">
+            Python :: 3
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.5">
+            Python :: 3.5
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.6">
+            Python :: 3.6
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.7">
+            Python :: 3.7
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.8">
+            Python :: 3.8
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+Implementation+%3A%3A+CPython">
+            Python :: Implementation :: CPython
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+Implementation+%3A%3A+PyPy">
+            Python :: Implementation :: PyPy
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li>
+      <strong>Topic</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Topic+%3A%3A+Software+Development+%3A%3A+Build+Tools">
+            Software Development :: Build Tools
+          </a>
+        </li>
+        
+        <li>
+          <a href="/search/?c=Topic+%3A%3A+System+%3A%3A+Software+Distribution">
+            System :: Software Distribution
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+  </ul>
+</div>
+
+          <br>
+        </div>
+
+        
+        <div id="history" data-target="project-tabs.content" class="vertical-tabs__content" role="tabpanel" aria-labelledby="history-tab mobile-history-tab" tabindex="-1">
+          <h2 class="page-title split-layout">
+            <span>Release history</span>
+            <span class="reset-text margin-top">
+              <a href="/help/#project-release-notifications">Release notifications</a> |
+              <a href="/rss/project/pypiserver/releases.xml">RSS feed <i class="fa fa-rss" aria-hidden="true"></i></a>
+            </span>
+          </h2>
+
+          <div class="release-timeline">
+            
+            
+            
+            
+            <div class="release release--latest release--current">
+              <div class="release__meta">
+                
+                <span class="badge">This version</span>
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/blue-cube.e6165d35.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.4.2/">
+                <p class="release__version">
+                  1.4.2
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-10-10T13:17:54+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Oct 10, 2020
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.4.1/">
+                <p class="release__version">
+                  1.4.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-10-06T01:54:32+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Oct 6, 2020
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.4.0/">
+                <p class="release__version">
+                  1.4.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-10-03T22:49:59+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Oct 3, 2020
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.3.2/">
+                <p class="release__version">
+                  1.3.2
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-01-11T23:32:35+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jan 11, 2020
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.3.1/">
+                <p class="release__version">
+                  1.3.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2019-09-11T00:56:47+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Sep 11, 2019
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.3.0/">
+                <p class="release__version">
+                  1.3.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2019-05-05T22:05:13+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  May 5, 2019
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.2.7/">
+                <p class="release__version">
+                  1.2.7
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2019-02-01T01:17:14+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Feb 1, 2019
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.2.6/">
+                <p class="release__version">
+                  1.2.6
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2019-01-26T22:18:27+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jan 26, 2019
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.2.5/">
+                <p class="release__version">
+                  1.2.5
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2018-11-11T17:54:53+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Nov 11, 2018
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.2.4/">
+                <p class="release__version">
+                  1.2.4
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2018-08-06T22:38:18+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Aug 6, 2018
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.2.3/">
+                <p class="release__version">
+                  1.2.3
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2018-08-04T17:33:48+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Aug 4, 2018
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.2.2/">
+                <p class="release__version">
+                  1.2.2
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2018-06-13T01:17:25+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jun 13, 2018
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.2.2.dev0/">
+                <p class="release__version">
+                  1.2.2.dev0
+                  
+                  <span class="badge badge--warning release__version-badge">
+                    pre-release
+                  </span>
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2018-06-12T01:55:52+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jun 12, 2018
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.2.1/">
+                <p class="release__version">
+                  1.2.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2017-11-30T01:12:18+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Nov 30, 2017
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.2.1rc0/">
+                <p class="release__version">
+                  1.2.1rc0
+                  
+                  <span class="badge badge--warning release__version-badge">
+                    pre-release
+                  </span>
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2017-11-14T18:53:38+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Nov 14, 2017
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.2.1.dev0/">
+                <p class="release__version">
+                  1.2.1.dev0
+                  
+                  <span class="badge badge--warning release__version-badge">
+                    pre-release
+                  </span>
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2017-11-10T19:09:32+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Nov 10, 2017
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.2.0/">
+                <p class="release__version">
+                  1.2.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2016-06-25T02:35:51+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jun 25, 2016
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.2.0b1/">
+                <p class="release__version">
+                  1.2.0b1
+                  
+                  <span class="badge badge--warning release__version-badge">
+                    pre-release
+                  </span>
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2016-06-24T17:26:19+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jun 24, 2016
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.2.0.dev1/">
+                <p class="release__version">
+                  1.2.0.dev1
+                  
+                  <span class="badge badge--warning release__version-badge">
+                    pre-release
+                  </span>
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2016-06-17T21:52:17+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jun 17, 2016
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.10/">
+                <p class="release__version">
+                  1.1.10
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2016-01-19T19:45:44+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jan 19, 2016
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.9/">
+                <p class="release__version">
+                  1.1.9
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2015-12-21T22:29:20+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Dec 21, 2015
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.9.dev2/">
+                <p class="release__version">
+                  1.1.9.dev2
+                  
+                  <span class="badge badge--warning release__version-badge">
+                    pre-release
+                  </span>
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2015-09-21T02:23:52+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Sep 21, 2015
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.9.dev1/">
+                <p class="release__version">
+                  1.1.9.dev1
+                  
+                  <span class="badge badge--warning release__version-badge">
+                    pre-release
+                  </span>
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2015-09-21T01:48:14+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Sep 21, 2015
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.9.dev0/">
+                <p class="release__version">
+                  1.1.9.dev0
+                  
+                  <span class="badge badge--warning release__version-badge">
+                    pre-release
+                  </span>
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2015-09-16T23:56:16+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Sep 16, 2015
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.8/">
+                <p class="release__version">
+                  1.1.8
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2015-09-15T19:12:01+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Sep 15, 2015
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.8b1/">
+                <p class="release__version">
+                  1.1.8b1
+                  
+                  <span class="badge badge--warning release__version-badge">
+                    pre-release
+                  </span>
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2015-09-11T15:44:43+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Sep 11, 2015
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.8b0/">
+                <p class="release__version">
+                  1.1.8b0
+                  
+                  <span class="badge badge--warning release__version-badge">
+                    pre-release
+                  </span>
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2015-09-11T14:16:54+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Sep 11, 2015
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.7/">
+                <p class="release__version">
+                  1.1.7
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2015-03-08T21:05:50+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Mar 8, 2015
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.7-rc.1/">
+                <p class="release__version">
+                  1.1.7-rc.1
+                  
+                  <span class="badge badge--warning release__version-badge">
+                    pre-release
+                  </span>
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2015-02-28T00:52:04+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Feb 28, 2015
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.6/">
+                <p class="release__version">
+                  1.1.6
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2014-03-05T22:00:12+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Mar 5, 2014
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.5/">
+                <p class="release__version">
+                  1.1.5
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2014-01-20T22:16:04+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jan 20, 2014
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.4/">
+                <p class="release__version">
+                  1.1.4
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2014-01-03T22:36:08+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jan 3, 2014
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.3/">
+                <p class="release__version">
+                  1.1.3
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2013-07-22T20:05:56+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jul 22, 2013
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.2/">
+                <p class="release__version">
+                  1.1.2
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2013-06-22T21:04:19+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jun 22, 2013
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.1/">
+                <p class="release__version">
+                  1.1.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2013-05-28T22:47:30+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  May 28, 2013
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.1.0/">
+                <p class="release__version">
+                  1.1.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2013-02-14T22:15:16+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Feb 14, 2013
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.0.1/">
+                <p class="release__version">
+                  1.0.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2013-01-03T22:00:39+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jan 3, 2013
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/1.0.0/">
+                <p class="release__version">
+                  1.0.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2012-10-26T18:39:19+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Oct 26, 2012
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/0.6.1/">
+                <p class="release__version">
+                  0.6.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2012-08-07T20:14:35+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Aug 7, 2012
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/0.6.0/">
+                <p class="release__version">
+                  0.6.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2012-06-14T19:55:21+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jun 14, 2012
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/0.5.2/">
+                <p class="release__version">
+                  0.5.2
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2012-03-26T22:27:06+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Mar 26, 2012
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/0.5.1/">
+                <p class="release__version">
+                  0.5.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2012-02-23T10:24:33+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Feb 23, 2012
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/0.5.0/">
+                <p class="release__version">
+                  0.5.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2011-12-05T21:40:32+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Dec 5, 2011
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/0.4.1/">
+                <p class="release__version">
+                  0.4.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2011-11-23T21:44:03+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Nov 23, 2011
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/0.4.0/">
+                <p class="release__version">
+                  0.4.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2011-11-19T20:37:13+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Nov 19, 2011
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/0.3.0/">
+                <p class="release__version">
+                  0.3.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2011-10-07T19:22:29+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Oct 7, 2011
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/0.2.0/">
+                <p class="release__version">
+                  0.2.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2011-08-09T21:56:34+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Aug 9, 2011
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/0.1.3/">
+                <p class="release__version">
+                  0.1.3
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2011-08-01T21:20:23+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Aug 1, 2011
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/0.1.2/">
+                <p class="release__version">
+                  0.1.2
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2011-08-01T00:09:16+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Aug 1, 2011
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/0.1.1/">
+                <p class="release__version">
+                  0.1.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2011-07-29T11:25:47+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jul 29, 2011
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release release--oldest">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.8c3a6fe9.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/pypiserver/0.1.0/">
+                <p class="release__version">
+                  0.1.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2011-07-29T01:34:48+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Jul 29, 2011
+</time>
+                </p>
+              </a>
+            </div>
+            
+          </div>
+        </div>
+
+        
+          
+          <div id="files" data-target="project-tabs.content" class="vertical-tabs__content" role="tabpanel" aria-labelledby="files-tab mobile-files-tab" tabindex="-1">
+            <h2 class="page-title">Download files</h2>
+            <p>Download the file for your platform. If you're not sure which to choose, learn more about <a href="https://packaging.python.org/installing/" title="External link" target="_blank" rel="noopener">installing packages</a>.</p>
+
+            
+            <h3>
+              
+                Source Distribution
+              
+            </h3>
+
+            
+    <div class="file">
+      <div class="file__graphic">
+        <i class="far fa-file" aria-hidden="true"></i>
+      </div>
+
+      <div class="card file__card">
+        <a href="https://files.pythonhosted.org/packages/5b/8b/e9ebdc79c6b68462583121e0d09795dc6790a262a100f9fa1143280cf313/pypiserver-1.4.2.zip">
+          pypiserver-1.4.2.zip
+        </a>
+        (547.6 kB
+        <a href="#copy-hash-modal-7c0fd1c9-5871-4295-8bda-57b4790eae4b">view hashes</a>)
+        <p class="file__meta">
+          Uploaded <time datetime="2020-10-10T13:17:57+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Oct 10, 2020
+</time>
+          
+          
+          <code>source</code>
+          
+          
+        </p>
+      </div>
+    </div>
+  
+            
+
+            
+            <h3>
+              
+                Built Distribution
+              
+            </h3>
+
+            
+    <div class="file">
+      <div class="file__graphic">
+        <i class="far fa-file" aria-hidden="true"></i>
+      </div>
+
+      <div class="card file__card">
+        <a href="https://files.pythonhosted.org/packages/94/95/d3ed454574364b5260bf506ca34dda69cfad6bfbe235d7e81905dfe644e6/pypiserver-1.4.2-py2.py3-none-any.whl">
+          pypiserver-1.4.2-py2.py3-none-any.whl
+        </a>
+        (77.6 kB
+        <a href="#copy-hash-modal-553c5f15-bb75-4af8-b1c8-e52209d24737">view hashes</a>)
+        <p class="file__meta">
+          Uploaded <time datetime="2020-10-10T13:17:54+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  Oct 10, 2020
+</time>
+          
+          
+          <code>py2</code>
+          
+          <code>py3</code>
+          
+          
+        </p>
+      </div>
+    </div>
+  
+            
+          </div>
+
+          
+          <div id="copy-hash-modal-7c0fd1c9-5871-4295-8bda-57b4790eae4b" class="modal modal--wide">
+  <div class="modal__content" role="dialog">
+    <a href="#modal-close" title="Close" class="modal__close">
+      <i class="fa fa-times" aria-hidden="true"></i>
+      <span class="sr-only">Close</span>
+    </a>
+    <div class="modal__body">
+      <h3 class="modal__title">
+        <a href="https://pip.pypa.io/en/stable/cli/pip_install/#hash-checking-mode" title="External link" target="_blank" rel="noopener">Hashes</a> for pypiserver-1.4.2.zip
+      </h3>
+      <table class="table table--hashes">
+        <caption class="sr-only">Hashes for pypiserver-1.4.2.zip</caption>
+        <thead>
+          <tr>
+            <th scope="col">Algorithm</th>
+            <th scope="col">Hash digest</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">SHA256</th>
+            <td><code>0bf2bc338519c2f767f4d577d9a16c79ea3083a1372049d70c05d053101a5e10</code></td>
+            <td class="table__align-right">
+              <button type="button" class="button button--small copy-tooltip copy-tooltip-w" data-tooltip-label="Copy to clipboard" data-clipboard-text="0bf2bc338519c2f767f4d577d9a16c79ea3083a1372049d70c05d053101a5e10">
+                Copy
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">MD5</th>
+            <td><code>f9f77ccad485e27212b5731915d8dab2</code></td>
+            <td class="table__align-right">
+              <button type="button" class="button button--small copy-tooltip copy-tooltip-w" data-tooltip-label="Copy to clipboard" data-clipboard-text="f9f77ccad485e27212b5731915d8dab2">
+                Copy
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">BLAKE2-256</th>
+            <td><code>5b8be9ebdc79c6b68462583121e0d09795dc6790a262a100f9fa1143280cf313</code></td>
+            <td class="table__align-right">
+              <button type="button" class="button button--small copy-tooltip copy-tooltip-w" data-tooltip-label="Copy to clipboard" data-clipboard-text="5b8be9ebdc79c6b68462583121e0d09795dc6790a262a100f9fa1143280cf313">
+                Copy
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal__footer">
+      <a href="#modal-close" class="button button--primary modal__action">Close</a>
+    </div>
+  </div>
+</div>
+          
+          <div id="copy-hash-modal-553c5f15-bb75-4af8-b1c8-e52209d24737" class="modal modal--wide">
+  <div class="modal__content" role="dialog">
+    <a href="#modal-close" title="Close" class="modal__close">
+      <i class="fa fa-times" aria-hidden="true"></i>
+      <span class="sr-only">Close</span>
+    </a>
+    <div class="modal__body">
+      <h3 class="modal__title">
+        <a href="https://pip.pypa.io/en/stable/cli/pip_install/#hash-checking-mode" title="External link" target="_blank" rel="noopener">Hashes</a> for pypiserver-1.4.2-py2.py3-none-any.whl
+      </h3>
+      <table class="table table--hashes">
+        <caption class="sr-only">Hashes for pypiserver-1.4.2-py2.py3-none-any.whl</caption>
+        <thead>
+          <tr>
+            <th scope="col">Algorithm</th>
+            <th scope="col">Hash digest</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">SHA256</th>
+            <td><code>3f73f13250c5ded5cd2653da5221c4635d6a0b428d0cb6c935741b906786349e</code></td>
+            <td class="table__align-right">
+              <button type="button" class="button button--small copy-tooltip copy-tooltip-w" data-tooltip-label="Copy to clipboard" data-clipboard-text="3f73f13250c5ded5cd2653da5221c4635d6a0b428d0cb6c935741b906786349e">
+                Copy
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">MD5</th>
+            <td><code>af055ff0bc05d32fffdf0d26788fd029</code></td>
+            <td class="table__align-right">
+              <button type="button" class="button button--small copy-tooltip copy-tooltip-w" data-tooltip-label="Copy to clipboard" data-clipboard-text="af055ff0bc05d32fffdf0d26788fd029">
+                Copy
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">BLAKE2-256</th>
+            <td><code>9495d3ed454574364b5260bf506ca34dda69cfad6bfbe235d7e81905dfe644e6</code></td>
+            <td class="table__align-right">
+              <button type="button" class="button button--small copy-tooltip copy-tooltip-w" data-tooltip-label="Copy to clipboard" data-clipboard-text="9495d3ed454574364b5260bf506ca34dda69cfad6bfbe235d7e81905dfe644e6">
+                Copy
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal__footer">
+      <a href="#modal-close" class="button button--primary modal__action">Close</a>
+    </div>
+  </div>
+</div>
+          
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer__logo">
+        <img src="/static/images/white-cube.8c3a6fe9.svg" alt="" class="-js-white-cube">
+      </div>
+
+      <div class="footer__menus">
+        <div class="footer__menu">
+          <h2>Help</h2>
+          <nav aria-label="Help navigation">
+            <ul>
+              <li><a href="https://packaging.python.org/installing/" title="External link" target="_blank" rel="noopener">Installing packages</a></li>
+              <li><a href="https://packaging.python.org/tutorials/packaging-projects/" title="External link" target="_blank" rel="noopener">Uploading packages</a></li>
+              <li><a href="https://packaging.python.org/" title="External link" target="_blank" rel="noopener">User guide</a></li>
+              <li><a href="/help/">FAQs</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer__menu">
+          <h2>About PyPI</h2>
+          <nav aria-label="About PyPI navigation">
+            <ul>
+              <li><a href="https://twitter.com/PyPI" title="External link" target="_blank" rel="noopener">PyPI on Twitter</a></li>
+              <li><a href="https://dtdg.co/pypi" title="External link" target="_blank" rel="noopener">Infrastructure dashboard</a></li>
+              <li><a href="https://www.python.org/dev/peps/pep-0541/" title="External link" target="_blank" rel="noopener">Package index name retention</a></li>
+              <li><a href="/sponsors/">Our sponsors</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer__menu">
+          <h2>Contributing to PyPI</h2>
+          <nav aria-label="How to contribute navigation">
+            <ul>
+              <li><a href="/help/#feedback">Bugs and feedback</a></li>
+              <li><a href="https://github.com/pypa/warehouse" title="External link" target="_blank" rel="noopener">Contribute on GitHub</a></li>
+              <li><a href="https://hosted.weblate.org/projects/pypa/warehouse/" title="External link" target="_blank" rel="noopener">Translate PyPI</a></li>
+              <li><a href="https://github.com/pypa/warehouse/graphs/contributors" title="External link" target="_blank" rel="noopener">Development credits</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer__menu">
+          <h2>Using PyPI</h2>
+          <nav aria-label="Using PyPI navigation">
+            <ul>
+              <li><a href="https://github.com/pypa/.github/blob/main/CODE_OF_CONDUCT.md" title="External link" target="_blank" rel="noopener">Code of conduct</a></li>
+              <li><a href="/security/">Report security issue</a></li>
+              <li><a href="https://www.python.org/privacy/" title="External link" target="_blank" rel="noopener">Privacy policy</a></li>
+              <li><a href="/policy/terms-of-use/">Terms of use</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <hr class="footer__divider">
+
+      <div class="footer__text">
+        
+        <p>Status: <a href="https://status.python.org/" title="External link" target="_blank" rel="noopener">
+          <span data-statuspage-domain="https://2p66nmmycsj3.statuspage.io">all systems operational</span></a>
+        </p>
+        
+        <p>
+          Developed and maintained by the Python community, for the Python community.
+          <br>
+          <a href="https://donate.pypi.org">Donate today!</a>
+        </p>
+        <p>© 2022 <a href="https://www.python.org/psf/" title="External link" target="_blank" rel="noopener">Python Software Foundation</a><br>
+          <a href="/sitemap/">Site map</a>
+        </p>
+      </div>
+
+      <div class="centered hide-on-desktop">
+        <button type="button" class="button button--switch-to-desktop hidden" data-target="viewport-toggle.switchToDesktop" data-action="viewport-toggle#switchToDesktop">
+          Switch to desktop version
+        </button>
+      </div>
+    </footer>
+
+
+    <div class="language-switcher">
+      <form action="/locale/">
+        <ul>
+          
+          <li>
+            <button
+              
+              class="language-switcher__selected"
+              
+              name="locale_id" value="en" type="submit"
+            >
+              English
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="es" type="submit"
+            >
+              español
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="fr" type="submit"
+            >
+              français
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="ja" type="submit"
+            >
+              日本語
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="pt_BR" type="submit"
+            >
+              português (Brasil)
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="uk" type="submit"
+            >
+              українська
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="el" type="submit"
+            >
+              Ελληνικά
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="de" type="submit"
+            >
+              Deutsch
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="zh_Hans" type="submit"
+            >
+              中文 (简体)
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="zh_Hant" type="submit"
+            >
+              中文 (繁體)
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="ru" type="submit"
+            >
+              русский
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="he" type="submit"
+            >
+              עברית
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="eo" type="submit"
+            >
+              esperanto
+            </button>
+          </li>
+          
+        </ul>
+      </form>
+    </div>
+
+
+    <div class="sponsors">
+  <p class="sponsors__title">Supported by</p>
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://aws.amazon.com/">
+          <img class=sponsors__image src="https://warehouse-camo.ingress.cmh1.psfhosted.org/ed7074cadad1a06f56bc520ad9bd3e00d0704c5b/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f6177732d77686974652d6c6f676f2d7443615473387a432e706e67" alt=AWS>
+          <span class="sponsors__name">AWS</span>
+          <span class="sponsors__service">
+          
+          
+            Cloud computing
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://www.datadoghq.com/">
+          <img class=sponsors__image src="https://warehouse-camo.ingress.cmh1.psfhosted.org/8855f7c063a3bdb5b0ce8d91bfc50cf851cc5c51/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f64617461646f672d77686974652d6c6f676f2d6668644c4e666c6f2e706e67" alt=Datadog>
+          <span class="sponsors__name">Datadog</span>
+          <span class="sponsors__service">
+          
+          
+            Monitoring
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://research.fb.com/">
+          <img class=sponsors__image src="https://warehouse-camo.ingress.cmh1.psfhosted.org/e338a8302eed851d9793e0a4a92f57b315eb5998/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f66616365626f6f6b2d696e7374616772616d2d77686974652d6c6f676f2d6750686a57647a722e706e67" alt="Facebook / Instagram">
+          <span class="sponsors__name">Facebook / Instagram</span>
+          <span class="sponsors__service">
+          
+          
+            PSF Sponsor
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://www.fastly.com/">
+          <img class=sponsors__image src="https://warehouse-camo.ingress.cmh1.psfhosted.org/df6fe8829cbff2d7f668d98571df1fd011f36192/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f666173746c792d77686974652d6c6f676f2d65684d3077735f6f2e706e67" alt=Fastly>
+          <span class="sponsors__name">Fastly</span>
+          <span class="sponsors__service">
+          
+          
+            CDN
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://careers.google.com/">
+          <img class=sponsors__image src="https://warehouse-camo.ingress.cmh1.psfhosted.org/420cc8cf360bac879e24c923b2f50ba7d1314fb0/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f676f6f676c652d77686974652d6c6f676f2d616734424e3774332e706e67" alt=Google>
+          <span class="sponsors__name">Google</span>
+          <span class="sponsors__service">
+          
+          
+            Object Storage and Download Analytics
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://www.python.org/psf/sponsors/#huawei">
+          <img class=sponsors__image src="https://warehouse-camo.ingress.cmh1.psfhosted.org/656ae2011c837dba1e2de4c8f85815eed86c0878/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f6875617765692d77686974652d6c6f676f2d416a465f553652312e706e67" alt=Huawei>
+          <span class="sponsors__name">Huawei</span>
+          <span class="sponsors__service">
+          
+          
+            PSF Sponsor
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://www.python.org/psf/sponsors/#microsoft">
+          <img class=sponsors__image src="https://warehouse-camo.ingress.cmh1.psfhosted.org/524d1ce72f7772294ca4c1fe05d21dec8fa3f8ea/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f6d6963726f736f66742d77686974652d6c6f676f2d5a443172685444462e706e67" alt=Microsoft>
+          <span class="sponsors__name">Microsoft</span>
+          <span class="sponsors__service">
+          
+          
+            PSF Sponsor
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://www.python.org/psf/sponsors/#nvidia">
+          <img class=sponsors__image src="https://warehouse-camo.ingress.cmh1.psfhosted.org/19eae9e26a9a9ffacc134095642b1392737c58fb/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f6e76696469612d77686974652d6c6f676f2d46394c393761474c2e706e67" alt=NVIDIA>
+          <span class="sponsors__name">NVIDIA</span>
+          <span class="sponsors__service">
+          
+          
+            PSF Sponsor
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://www.pingdom.com/">
+          <img class=sponsors__image src="https://warehouse-camo.ingress.cmh1.psfhosted.org/d01053c02f3a626b73ffcb06b96367fdbbf9e230/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f70696e67646f6d2d77686974652d6c6f676f2d67355831547546362e706e67" alt=Pingdom>
+          <span class="sponsors__name">Pingdom</span>
+          <span class="sponsors__service">
+          
+          
+            Monitoring
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://opensource.salesforce.com/">
+          <img class=sponsors__image src="https://warehouse-camo.ingress.cmh1.psfhosted.org/932f54a6c688f0bbc0e2f4e7b7dc5c067eed6c55/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f73616c6573666f7263652d77686974652d6c6f676f2d4539677a3053782d2e706e67" alt=Salesforce>
+          <span class="sponsors__name">Salesforce</span>
+          <span class="sponsors__service">
+          
+          
+            PSF Sponsor
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://getsentry.com/for/python">
+          <img class=sponsors__image src="https://warehouse-camo.ingress.cmh1.psfhosted.org/b1dc2c04aa1a8efbacd6dc6254bb63429af47b41/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f73656e7472792d77686974652d6c6f676f2d31556836754c32452e706e67" alt=Sentry>
+          <span class="sponsors__name">Sentry</span>
+          <span class="sponsors__service">
+          
+          
+            Error logging
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://statuspage.io">
+          <img class=sponsors__image src="https://warehouse-camo.ingress.cmh1.psfhosted.org/b611884ff90435a0575dbab7d9b0d3e60f136466/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f737461747573706167652d77686974652d6c6f676f2d5467476c6a4a2d502e706e67" alt=StatusPage>
+          <span class="sponsors__name">StatusPage</span>
+          <span class="sponsors__service">
+          
+          
+            Status page
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+</div>
+
+    
+  </body>
+
+</html>
